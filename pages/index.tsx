@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useTables } from "./hooks/useTables";
+import { useTables } from "../utils/hooks/useTables";
 import { format } from "date-fns";
 
 const Home: NextPage = () => {

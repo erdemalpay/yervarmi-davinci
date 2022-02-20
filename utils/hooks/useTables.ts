@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { get } from "../../api";
+import { get } from "../api";
 
 type Table = {
   finishHour: string;
