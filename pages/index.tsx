@@ -30,7 +30,7 @@ const Home: NextPage = () => {
 
       <div className="w-4/5 md:w-1/3 h-1/4 absolute m-auto top-0 bottom-0 right-0 left-0">
         <div className="bg-gray-200 p-4 rounded-lg flex flex-col justify-center">
-          {isLoading && <h1 className="text-5xl">Kontrol ediliyor</h1>}
+          {isLoading && <h1 className="text-lg">Kontrol ediliyor</h1>}
           {!isLoading && <h1 className="text-lg text-center">{message}</h1>}
           <div className="flex bg-gray-400 rounded-lg justify-center w-full text-2xl md:hidden">
             <a href="tel:03128200301">Kafeyi ara</a>
