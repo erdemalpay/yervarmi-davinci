@@ -26,11 +26,10 @@ const Home: NextPage = () => {
       <Head>
         <title>{`Da Vinci'de yer var mı?`}</title>
         <meta name="description" content="" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="w-4/5 md:w-1/3 h-1/4 absolute m-auto top-0 bottom-0 right-0 left-0">
-        <div className="bg-gray-200 p-4 rounded-lg flex flex-col justify-center">
+      <div className="w-screen h-screen flex justify-center items-center m-auto">
+        <div className="bg-gray-200 p-8 rounded-lg flex flex-col justify-center w-4/5 md:w-1/3 h-1/5">
           <ClipLoader loading={isLoading} size={15} />
           {!isLoading && <h1 className="text-lg text-center">{message}</h1>}
           {!isLoading && (
