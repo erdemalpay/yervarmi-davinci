@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function Button({ ...props }): JSX.Element {
   return (
     <div className="flex w-full cursor-pointer" onClick={props.onClick}>
@@ -7,7 +9,10 @@ export function Button({ ...props }): JSX.Element {
         } w-0 h-0 border-t-transparent border-solid border-b-[28px] border-t-[28px] border-b-transparent border-r-[20px]`}
       ></div>
       <button className={`p-4 font-germania w-full ${props.className ?? ""}`}>
-        {props.children}
+        <div className="flex w-full justify-center gap-2">
+          <Image src={props.icon} alt="icon" />
+          {props.children}
+        </div>
       </button>
       <div
         className={`${

@@ -7,18 +7,21 @@ import gamePic from "../public/boardgame.png";
 import titleBackground from "../public/title-background.png";
 import fullTable from "../public/table.svg";
 import emptyTable from "../public/table-empty.svg";
-import empty from "../public/empty.svg";
+import phone from "../public/phone.svg";
+import map from "../public/map.svg";
 import { Button } from "../components/Button";
 
 const Home: NextPage = () => {
   const date = format(new Date(), "yyyy-MM-dd");
-  const { tableCount, isLoading } = useTables(date);
+  // const { tableCount, isLoading } = useTables(date);
+  const tableCount = 15;
+  const isLoading = false;
   const availableTables = 15 - tableCount;
   let message = "";
   if (availableTables >= 15) {
     message = `Evet tamamen boş. Henüz açılmamış olabilir mi?`;
   } else if (availableTables > 7) {
-    message = `Evet yeterince yer var.`;
+    message = `Evet.`;
   } else if (availableTables > 3) {
     message = `Evet ama dolmaya başlamış.`;
   } else if (availableTables > 0) {
@@ -71,16 +74,18 @@ const Home: NextPage = () => {
           <Image src={gamePic} alt="Board Game" />
         </div>
         {!isLoading && (
-          <div className="p-8 rounded-lg flex flex-col justify-center md:w-1/3 w-full border-4">
+          <div className="p-8 rounded-lg flex flex-col justify-center md:w-1/3 w-full">
             <div className="text-center text-dark-brown text-3xl font-germania">
               {`Da Vinci'de yer var mı?`}
             </div>
             <div className="text-center text-dark-brown text-xs font-merriweather mt-4">
               {message}
             </div>
-            <div className="text-center text-dark-brown text-xs font-merriweather mt-2 font-bold">
-              {`Şu an ${availableTables} boş masa var.`}
-            </div>
+            {availableTables > 0 && (
+              <div className="text-center text-dark-brown text-xs font-merriweather mt-2 font-bold">
+                {`Şu an ${availableTables} boş masa var.`}
+              </div>
+            )}
             <div className="p-4 grid grid-cols-5 w-full mt-2">{tables1}</div>
             <div className="text-center text-dark-brown text-xs font-merriweather">
               Emin olmak için kafeyi arayabilirsin.
@@ -89,6 +94,7 @@ const Home: NextPage = () => {
               <Button
                 className="bg-dark-brown text-light-brown border-dark-brown"
                 borderstyles="border-dark-brown"
+                icon={phone}
                 onClick={() => (document.location.href = "tel:03128200301")}
               >
                 Kafeyi Ara
@@ -96,6 +102,7 @@ const Home: NextPage = () => {
               <Button
                 className="bg-light-brown text-dark-brown "
                 borderstyles="border-light-brown"
+                icon={map}
                 onClick={() =>
                   (document.location.href =
                     "https://www.google.com/maps/dir/?api=1&destination=Da+Vinci+Board+Game+Cafe")
