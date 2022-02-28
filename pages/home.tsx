@@ -5,11 +5,11 @@ import { useTables } from "../utils/hooks/useTables";
 import { format } from "date-fns";
 import gamePic from "../public/boardgame.png";
 import titleBackground from "../public/title-background.png";
-import emptyTable from "../public/table-empty.svg";
-import phone from "../public/phone.svg";
-import map from "../public/map.svg";
 import { Button } from "../components/Button";
-import { TableIcon } from "../components/TableIcon";
+import { TableIcon } from "../icons/TableIcon";
+import { EmptyTableIcon } from "../icons/EmptyTableIcon";
+import { PhoneIcon } from "../icons/PhoneIcon";
+import { MapIcon } from "../icons/MapIcon";
 
 const Home: NextPage = () => {
   const date = format(new Date(), "yyyy-MM-dd");
@@ -28,13 +28,13 @@ const Home: NextPage = () => {
     message = `Hayır maalesef şu an yer kalmamış. Gelmeyi planlıyorsan kafeyi arayarak sıraya ismini yazdırabilirsin.`;
   }
 
-  const tables1 = [];
+  const tables = [];
 
   for (let i = 0; i < tableCount; i++) {
-    tables1.push(<TableIcon />);
+    tables.push(<TableIcon />);
   }
   for (let i = tableCount; i < 15; i++) {
-    tables1.push(<Image src={emptyTable} alt="table" />);
+    tables.push(<EmptyTableIcon />);
   }
 
   return (
@@ -84,7 +84,7 @@ const Home: NextPage = () => {
                 {`Şu an ${availableTables} boş masa var.`}
               </div>
             )}
-            <div className="p-4 grid grid-cols-5 w-full mt-2">{tables1}</div>
+            <div className="p-4 grid grid-cols-5 w-full mt-2">{tables}</div>
             <div className="text-center text-dark-brown text-xs font-merriweather">
               Emin olmak için kafeyi arayabilirsin.
             </div>
@@ -92,7 +92,7 @@ const Home: NextPage = () => {
               <Button
                 className="bg-dark-brown text-light-brown border-dark-brown"
                 borderstyles="border-dark-brown"
-                icon={phone}
+                icon={PhoneIcon}
                 onClick={() => (document.location.href = "tel:03128200301")}
               >
                 Kafeyi Ara
@@ -100,7 +100,7 @@ const Home: NextPage = () => {
               <Button
                 className="bg-light-brown text-dark-brown "
                 borderstyles="border-light-brown"
-                icon={map}
+                icon={MapIcon}
                 onClick={() =>
                   (document.location.href =
                     "https://www.google.com/maps/dir/?api=1&destination=Da+Vinci+Board+Game+Cafe")
