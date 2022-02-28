@@ -98,10 +98,10 @@ const Home: NextPage = () => {
                 borderstyles="border-light-brown"
                 onClick={() =>
                   (document.location.href =
-                    "https://g.page/davinciboardgame?share")
+                    "https://www.google.com/maps/dir/?api=1&destination=Da+Vinci+Board+Game+Cafe")
                 }
               >
-                Haritada Göster
+                Google
               </Button>
             </div>
           </div>
