@@ -98,7 +98,7 @@ const Home: NextPage = () => {
                 borderstyles="border-light-brown"
                 onClick={() =>
                   (document.location.href =
-                    "https://goo.gl/maps/HW6J1QYRoWJkH7Tf7")
+                    "https://g.page/davinciboardgame?share")
                 }
               >
                 Haritada Göster
