@@ -10,7 +10,7 @@ export function Button({ ...props }): JSX.Element {
       ></div>
       <button className={`p-4 font-germania w-full ${props.className ?? ""}`}>
         <div className="flex w-full justify-center gap-2">
-          {props.icon}
+          <props.Icon />
           {props.children}
         </div>
       </button>

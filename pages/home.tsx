@@ -31,10 +31,10 @@ const Home: NextPage = () => {
   const tables = [];
 
   for (let i = 0; i < tableCount; i++) {
-    tables.push(<TableIcon />);
+    tables.push(<TableIcon key={i} />);
   }
   for (let i = tableCount; i < 15; i++) {
-    tables.push(<EmptyTableIcon />);
+    tables.push(<EmptyTableIcon key={i} />);
   }
 
   return (
@@ -92,7 +92,7 @@ const Home: NextPage = () => {
               <Button
                 className="bg-dark-brown text-light-brown border-dark-brown"
                 borderstyles="border-dark-brown"
-                icon={PhoneIcon}
+                Icon={PhoneIcon}
                 onClick={() => (document.location.href = "tel:03128200301")}
               >
                 Kafeyi Ara
@@ -100,7 +100,7 @@ const Home: NextPage = () => {
               <Button
                 className="bg-light-brown text-dark-brown "
                 borderstyles="border-light-brown"
-                icon={MapIcon}
+                Icon={MapIcon}
                 onClick={() =>
                   (document.location.href =
                     "https://www.google.com/maps/dir/?api=1&destination=Da+Vinci+Board+Game+Cafe")
