@@ -5,11 +5,11 @@ import { useTables } from "../utils/hooks/useTables";
 import { format } from "date-fns";
 import gamePic from "../public/boardgame.png";
 import titleBackground from "../public/title-background.png";
-import fullTable from "../public/table.svg";
 import emptyTable from "../public/table-empty.svg";
 import phone from "../public/phone.svg";
 import map from "../public/map.svg";
 import { Button } from "../components/Button";
+import { TableIcon } from "../components/TableIcon";
 
 const Home: NextPage = () => {
   const date = format(new Date(), "yyyy-MM-dd");
@@ -31,7 +31,7 @@ const Home: NextPage = () => {
   const tables1 = [];
 
   for (let i = 0; i < tableCount; i++) {
-    tables1.push(<Image src={fullTable} alt="table" />);
+    tables1.push(<TableIcon />);
   }
   for (let i = tableCount; i < 15; i++) {
     tables1.push(<Image src={emptyTable} alt="table" />);
