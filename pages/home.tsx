@@ -101,7 +101,7 @@ const Home: NextPage = () => {
                     "https://www.google.com/maps/dir/?api=1&destination=Da+Vinci+Board+Game+Cafe")
                 }
               >
-                Google
+                Yol tarifi al
               </Button>
             </div>
           </div>
