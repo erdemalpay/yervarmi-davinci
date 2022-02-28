@@ -72,7 +72,7 @@ const Home: NextPage = () => {
           <Image src={gamePic} alt="Board Game" />
         </div>
         {!isLoading && (
-          <div className="p-8 rounded-lg flex flex-col justify-center md:w-1/3 w-full">
+          <div className="px-8 pb-4 rounded-lg flex flex-col justify-center md:w-1/3 w-full">
             <div className="text-center text-dark-brown text-3xl font-germania">
               {`Da Vinci'de yer var mı?`}
             </div>
