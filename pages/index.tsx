@@ -29,7 +29,7 @@ const Home: NextPage = () => {
       </Head>
 
       <div className="w-screen h-screen flex justify-center items-center m-auto">
-        <div className="bg-gray-200 p-8 rounded-lg flex flex-col justify-center w-4/5 md:w-1/3 h-1/5">
+        <div className="bg-gray-200 rounded-lg flex flex-col justify-center p-4 w-5/6 md:w-1/3 h-1/5">
           <ClipLoader loading={isLoading} size={15} />
           {!isLoading && <h1 className="text-lg text-center">{message}</h1>}
           {!isLoading && (
