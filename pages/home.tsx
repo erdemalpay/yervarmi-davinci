@@ -13,9 +13,7 @@ import { Button } from "../components/Button";
 
 const Home: NextPage = () => {
   const date = format(new Date(), "yyyy-MM-dd");
-  // const { tableCount, isLoading } = useTables(date);
-  const tableCount = 15;
-  const isLoading = false;
+  const { tableCount, isLoading } = useTables(date);
   const availableTables = 15 - tableCount;
   let message = "";
   if (availableTables >= 15) {
@@ -46,7 +44,7 @@ const Home: NextPage = () => {
         <meta name="description" content="" />
       </Head>
 
-      <div className="w-full h-screen flex flex-col bg-[#FBEEE2]">
+      <div className="w-full h-full flex flex-col bg-[#FBEEE2]">
         <div className="flex w-full h-16">
           <div className="relative w-full">
             <Image
