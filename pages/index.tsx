@@ -84,19 +84,17 @@ const Home: NextPage = () => {
             <div className="text-center text-dark-brown text-3xl lg:text-6xl font-germania">
               {`Da Vinci'de yer var mı?`}
             </div>
-            <div className="text-center text-dark-brown text-xs lg:text-xl font-merriweather mt-4">
+            <div className="text-center text-dark-brown text-base lg:text-xl font-merriweather mt-4">
               {message}
             </div>
             {availableTables > 0 && (
-              <div className="text-center text-dark-brown text-xs lg:text-xl font-merriweather mt-2 font-bold">
+              <div className="text-center text-dark-brown text-base lg:text-xl font-merriweather font-bold">
                 {`Şu an ${availableTables} boş masa var.`}
               </div>
             )}
             <div className="flex justify-center w-full">
-              <div className="w-1/2">
-                <div className="p-4 grid grid-cols-5 w-full mt-2 justify-center">
-                  {tables}
-                </div>
+              <div className="p-4 grid grid-cols-5 w-full justify-between">
+                {tables}
               </div>
             </div>
             <div className="text-center text-dark-brown text-xs font-merriweather">
