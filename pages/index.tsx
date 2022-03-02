@@ -93,8 +93,10 @@ const Home: NextPage = () => {
               </div>
             )}
             <div className="flex justify-center w-full">
-              <div className="p-4 grid grid-cols-5 w-full justify-between">
-                {tables}
+              <div className="flex w-full lg:w-1/2">
+                <div className="p-4 grid grid-cols-5 w-full justify-center">
+                  {tables}
+                </div>
               </div>
             </div>
             <div className="text-center text-dark-brown text-xs font-merriweather">
