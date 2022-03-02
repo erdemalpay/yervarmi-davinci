@@ -31,10 +31,18 @@ const Home: NextPage = () => {
   const tables = [];
 
   for (let i = 0; i < tableCount; i++) {
-    tables.push(<TableIcon key={i} />);
+    tables.push(
+      <div className="flex justify-center">
+        <TableIcon key={i} />
+      </div>
+    );
   }
   for (let i = tableCount; i < 15; i++) {
-    tables.push(<EmptyTableIcon key={i} />);
+    tables.push(
+      <div className="flex justify-center">
+        <EmptyTableIcon key={i} />
+      </div>
+    );
   }
 
   return (
@@ -44,7 +52,7 @@ const Home: NextPage = () => {
         <meta name="description" content="" />
       </Head>
 
-      <div className="w-full h-full flex flex-col bg-[#FBEEE2]">
+      <div className="w-full lg:h-screen h-full flex flex-col bg-[#FBEEE2]">
         <div className="flex w-full h-16">
           <div className="relative w-full">
             <Image
@@ -68,27 +76,33 @@ const Home: NextPage = () => {
         </div>
         {/* We are setting line height to 0 to remove space caused by line-height on images (images are assumes as typograhy) */}
         {/* Check magic space topic here https://courses.joshwcomeau.com/css-for-js/01-rendering-logic-1/09-flow-layout */}
-        <div className="leading-[0]">
+        <div className="leading-[0] flex justify-center mt-4">
           <Image src={gamePic} alt="Board Game" />
         </div>
         {!isLoading && (
-          <div className="px-8 pb-4 rounded-lg flex flex-col justify-center md:w-1/3 w-full">
-            <div className="text-center text-dark-brown text-3xl font-germania">
+          <div className="px-8 pb-4 rounded-lg flex flex-col justify-center w-full">
+            <div className="text-center text-dark-brown text-3xl lg:text-6xl font-germania">
               {`Da Vinci'de yer var mı?`}
             </div>
-            <div className="text-center text-dark-brown text-xs font-merriweather mt-4">
+            <div className="text-center text-dark-brown text-xs lg:text-xl font-merriweather mt-4">
               {message}
             </div>
             {availableTables > 0 && (
-              <div className="text-center text-dark-brown text-xs font-merriweather mt-2 font-bold">
+              <div className="text-center text-dark-brown text-xs lg:text-xl font-merriweather mt-2 font-bold">
                 {`Şu an ${availableTables} boş masa var.`}
               </div>
             )}
-            <div className="p-4 grid grid-cols-5 w-full mt-2">{tables}</div>
+            <div className="flex justify-center w-full">
+              <div className="w-1/2">
+                <div className="p-4 grid grid-cols-5 w-full mt-2 justify-center">
+                  {tables}
+                </div>
+              </div>
+            </div>
             <div className="text-center text-dark-brown text-xs font-merriweather">
               Emin olmak için kafeyi arayabilirsin.
             </div>
-            <div className="flex flex-col mt-4 gap-2">
+            <div className="flex flex-col mt-4 gap-2 lg:text-xl mx-2 lg:mx-80">
               <Button
                 className="bg-dark-brown text-light-brown border-dark-brown"
                 borderstyles="border-dark-brown"
@@ -96,6 +110,7 @@ const Home: NextPage = () => {
                 onClick={() => (document.location.href = "tel:03128200301")}
               >
                 Kafeyi Ara
+                <span className="hidden lg:inline">0312 820 03 01</span>
               </Button>
               <Button
                 className="bg-light-brown text-dark-brown "
