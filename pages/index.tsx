@@ -76,7 +76,7 @@ const Home: NextPage = () => {
         </div>
         {/* We are setting line height to 0 to remove space caused by line-height on images (images are assumes as typograhy) */}
         {/* Check magic space topic here https://courses.joshwcomeau.com/css-for-js/01-rendering-logic-1/09-flow-layout */}
-        <div className="leading-[0] flex justify-center mt-4">
+        <div className="leading-[0] flex justify-center lg:mt-4">
           <Image src={gamePic} alt="Board Game" />
         </div>
         {!isLoading && (
