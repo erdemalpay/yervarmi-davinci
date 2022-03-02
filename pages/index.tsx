@@ -1,8 +1,15 @@
 import type { NextPage } from "next";
+import Image from "next/image";
 import Head from "next/head";
 import { useTables } from "../utils/hooks/useTables";
 import { format } from "date-fns";
-import ClipLoader from "react-spinners/ClipLoader";
+import gamePic from "../public/boardgame.png";
+import titleBackground from "../public/title-background.png";
+import { Button } from "../components/Button";
+import { TableIcon } from "../icons/TableIcon";
+import { EmptyTableIcon } from "../icons/EmptyTableIcon";
+import { PhoneIcon } from "../icons/PhoneIcon";
+import { MapIcon } from "../icons/MapIcon";
 
 const Home: NextPage = () => {
   const date = format(new Date(), "yyyy-MM-dd");
@@ -10,15 +17,32 @@ const Home: NextPage = () => {
   const availableTables = 15 - tableCount;
   let message = "";
   if (availableTables >= 15) {
-    message = `Evet şu an kafe tamamen boş. (Henüz açılmamış olabilir mi?) Emin olmak için kafeyi arayabilirsin.`;
+    message = `Evet tamamen boş. Henüz açılmamış olabilir mi?`;
   } else if (availableTables > 7) {
-    message = `Evet şu an ${availableTables} boş masa var. Emin olmak için kafeyi arayabilirsin.`;
+    message = `Evet.`;
   } else if (availableTables > 3) {
-    message = `Evet ama dolmaya başlamış. Şu an ${availableTables} boş masa var. Emin olmak için kafeyi arayabilirsin.`;
+    message = `Evet ama dolmaya başlamış.`;
   } else if (availableTables > 0) {
-    message = `Evet ama dolmak üzere, sadece ${availableTables} boş masa var. Yarım saat içinde geleceksen kafeyi arayarak yer ayırmalısın.`;
+    message = `Evet ama dolmak üzere. Yarım saat içinde geleceksen kafeyi arayarak yer ayırmalısın.`;
   } else {
     message = `Hayır maalesef şu an yer kalmamış. Gelmeyi planlıyorsan kafeyi arayarak sıraya ismini yazdırabilirsin.`;
+  }
+
+  const tables = [];
+
+  for (let i = 0; i < tableCount; i++) {
+    tables.push(
+      <div className="flex justify-center">
+        <TableIcon key={i} />
+      </div>
+    );
+  }
+  for (let i = tableCount; i < 15; i++) {
+    tables.push(
+      <div className="flex justify-center">
+        <EmptyTableIcon key={i} />
+      </div>
+    );
   }
 
   return (
@@ -28,23 +52,80 @@ const Home: NextPage = () => {
         <meta name="description" content="" />
       </Head>
 
-      <div className="w-screen h-screen flex justify-center items-center m-auto">
-        <div className="bg-gray-200 rounded-lg flex flex-col justify-center p-4 w-5/6 md:w-1/3 h-1/5">
-          <ClipLoader loading={isLoading} size={15} />
-          {!isLoading && <h1 className="text-lg text-center">{message}</h1>}
-          {!isLoading && (
-            <>
-              <div className="flex bg-gray-400 rounded-lg justify-center w-full text-2xl md:hidden">
-                <a href="tel:03128200301">Kafeyi ara</a>
+      <div className="w-full lg:h-screen h-full flex flex-col bg-[#FBEEE2]">
+        <div className="flex w-full h-16">
+          <div className="relative w-full">
+            <Image
+              className=""
+              src={titleBackground}
+              alt="background"
+              layout="fill"
+            />
+            <Image
+              className=""
+              src={titleBackground}
+              alt="background"
+              layout="fill"
+            />
+            <div className="text-light-brown text-2xl h-full relative font-germania">
+              <div className="flex justify-center items-center h-full">
+                Da Vinci Board Game Cafe
               </div>
-              <div className="justify-center w-full text-2xl hidden md:flex">
-                <a href="tel:03128200301">
-                  Kafe telefon numarasi: 0312 820 03 01
-                </a>
-              </div>
-            </>
-          )}
+            </div>
+          </div>
         </div>
+        {/* We are setting line height to 0 to remove space caused by line-height on images (images are assumes as typograhy) */}
+        {/* Check magic space topic here https://courses.joshwcomeau.com/css-for-js/01-rendering-logic-1/09-flow-layout */}
+        <div className="leading-[0] flex justify-center mt-4">
+          <Image src={gamePic} alt="Board Game" />
+        </div>
+        {!isLoading && (
+          <div className="px-8 pb-4 rounded-lg flex flex-col justify-center w-full">
+            <div className="text-center text-dark-brown text-3xl lg:text-6xl font-germania">
+              {`Da Vinci'de yer var mı?`}
+            </div>
+            <div className="text-center text-dark-brown text-xs lg:text-xl font-merriweather mt-4">
+              {message}
+            </div>
+            {availableTables > 0 && (
+              <div className="text-center text-dark-brown text-xs lg:text-xl font-merriweather mt-2 font-bold">
+                {`Şu an ${availableTables} boş masa var.`}
+              </div>
+            )}
+            <div className="flex justify-center w-full">
+              <div className="w-1/2">
+                <div className="p-4 grid grid-cols-5 w-full mt-2 justify-center">
+                  {tables}
+                </div>
+              </div>
+            </div>
+            <div className="text-center text-dark-brown text-xs font-merriweather">
+              Emin olmak için kafeyi arayabilirsin.
+            </div>
+            <div className="flex flex-col mt-4 gap-2 lg:text-xl mx-2 lg:mx-80">
+              <Button
+                className="bg-dark-brown text-light-brown border-dark-brown"
+                borderstyles="border-dark-brown"
+                Icon={PhoneIcon}
+                onClick={() => (document.location.href = "tel:03128200301")}
+              >
+                Kafeyi Ara
+                <span className="hidden lg:inline">0312 820 03 01</span>
+              </Button>
+              <Button
+                className="bg-light-brown text-dark-brown "
+                borderstyles="border-light-brown"
+                Icon={MapIcon}
+                onClick={() =>
+                  (document.location.href =
+                    "https://www.google.com/maps/dir/?api=1&destination=Da+Vinci+Board+Game+Cafe")
+                }
+              >
+                Yol tarifi al
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
