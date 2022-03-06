@@ -11,12 +11,14 @@ import { EmptyTableIcon } from "../icons/EmptyTableIcon";
 import { PhoneIcon } from "../icons/PhoneIcon";
 import { MapIcon } from "../icons/MapIcon";
 
+const MAX_TABLE_COUNT = 16;
+
 const Home: NextPage = () => {
   const date = format(new Date(), "yyyy-MM-dd");
   const { tableCount, isLoading } = useTables(date);
-  const availableTables = 15 - tableCount;
+  const availableTables = MAX_TABLE_COUNT - tableCount;
   let message = "";
-  if (availableTables >= 15) {
+  if (availableTables >= MAX_TABLE_COUNT) {
     message = `Evet tamamen boş. Henüz açılmamış olabilir mi?`;
   } else if (availableTables > 7) {
     message = `Evet.`;
@@ -37,7 +39,7 @@ const Home: NextPage = () => {
       </div>
     );
   }
-  for (let i = tableCount; i < 15; i++) {
+  for (let i = tableCount; i < MAX_TABLE_COUNT; i++) {
     tables.push(
       <div className="flex justify-center">
         <EmptyTableIcon key={i} />
@@ -166,7 +168,7 @@ const Home: NextPage = () => {
             )}
             <div className="flex justify-center w-full">
               <div className="flex w-full lg:w-1/2">
-                <div className="p-4 grid grid-cols-5 w-full justify-center">
+                <div className="p-4 grid grid-cols-4 w-full justify-center">
                   {tables}
                 </div>
               </div>
