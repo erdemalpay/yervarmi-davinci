@@ -15,11 +15,29 @@ const MAX_TABLE_COUNT = 16;
 
 const Home: NextPage = () => {
   const date = format(new Date(), "yyyy-MM-dd");
+  const date_long=new Date();
+  const day_type=date_long.getDay(); 
+  let acilis_saati=0;
+  if(day_type===0 || day_type===6)
+  {
+   acilis_saati=12;
+  }
+  else
+  {
+   acilis_saati=13;
+  }
+  const hour_of_day=date_long.getHours();
   const { tableCount, isLoading } = useTables(date);
   const availableTables = MAX_TABLE_COUNT - tableCount;
   let message = "";
+  if(hour_of_day<acilis_saati)
+  {
+    message = `Cafe henüz açılmamış.`;
+  }
+else
+{
   if (availableTables >= MAX_TABLE_COUNT) {
-    message = `Evet tamamen boş. Henüz açılmamış olabilir mi?`;
+    message = `Evet tamamen boş. `;
   } else if (availableTables > 7) {
     message = `Evet.`;
   } else if (availableTables > 3) {
@@ -29,7 +47,7 @@ const Home: NextPage = () => {
   } else {
     message = `Hayır maalesef şu an yer kalmamış. Gelmeyi planlıyorsan kafeyi arayarak sıraya ismini yazdırabilirsin.`;
   }
-
+}
   const tables = [];
 
   for (let i = 0; i < tableCount; i++) {
