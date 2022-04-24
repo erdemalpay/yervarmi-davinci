@@ -15,22 +15,21 @@ const MAX_TABLE_COUNT = 16;
 
 const Home: NextPage = () => {
   const date = format(new Date(), "yyyy-MM-dd");
-  const date_long=new Date();
-  const day_type=date_long.getDay(); 
-  let acilis_saati=0;
-  if(day_type===0 || day_type===6)
-  {
-   acilis_saati=12;
+  const dateLong=new Date();
+  const dayType=dateLong.getDay(); 
+  let acilisSaati=0;
+  if(dayType===0 || dayType===6){
+   acilisSaati=12;
   }
-  else
-  {
-   acilis_saati=13;
+  else{
+   acilisSaati=13;
   }
-  const hour_of_day=date_long.getHours();
+  const hourOfDay=dateLong.getHours();
   const { tableCount, isLoading } = useTables(date);
+  console.log(tableCount)
   const availableTables = MAX_TABLE_COUNT - tableCount;
   let message = "";
-  if(hour_of_day<acilis_saati)
+  if(hourOfDay<acilisSaati)
   {
     message = `Cafe henüz açılmamış.`;
   }
