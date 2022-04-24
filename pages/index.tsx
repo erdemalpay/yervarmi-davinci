@@ -26,15 +26,12 @@ const Home: NextPage = () => {
   }
   const hourOfDay=dateLong.getHours();
   const { tableCount, isLoading } = useTables(date);
-  console.log(tableCount)
   const availableTables = MAX_TABLE_COUNT - tableCount;
   let message = "";
-  if(hourOfDay<acilisSaati)
-  {
+  if(hourOfDay<acilisSaati){
     message = `Cafe henüz açılmamış.`;
   }
-else
-{
+else{
   if (availableTables >= MAX_TABLE_COUNT) {
     message = `Evet tamamen boş. `;
   } else if (availableTables > 7) {
