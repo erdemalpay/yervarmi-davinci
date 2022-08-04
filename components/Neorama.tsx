@@ -49,15 +49,15 @@ export const Neorama = ({ setLocation }: LocationSelectorProps) => {
   return (
     <div>
       <div className="w-full h-full flex flex-col bg-[#FBEEE2]">
-        <div className="flex justify-center w-full">
+        <div className="flex justify-center w-full  font-germania text-2xl lg:text-4xl">
           <div
-            className="text-center bg-dark-brown text-light-brown h-20 w-4/5 rounded text-2xl lg:text-4xl justify-center flex items-center cursor-pointer"
+            className="text-center bg-dark-brown text-light-brown h-20 w-4/5 justify-center flex items-center cursor-pointer"
             onClick={() => setLocation(1)}
           >
             Bahçeli
           </div>
           <div
-            className="text-center bg-[#FBEEE2] text-dark-brown h-20 w-4/5 text-2xl lg:text-4xl justify-center flex items-center cursor-pointer"
+            className="text-center bg-[#FBEEE2] text-dark-brown h-20 w-4/5 justify-center flex items-center cursor-pointer"
             onClick={() => setLocation(2)}
           >
             Neorama
