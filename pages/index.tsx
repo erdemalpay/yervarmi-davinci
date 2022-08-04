@@ -88,7 +88,7 @@ const Home: NextPage = () => {
         <meta name="theme-color" content="#ffffff" />
       </Head>
 
-      <div className="w-full lg:h-screen h-full flex flex-col bg-[#FBEEE2]">
+      <div className="w-full h-screen flex flex-col bg-[#FBEEE2]">
         <div className="flex w-full h-16">
           <div className="relative w-full">
             <Image
