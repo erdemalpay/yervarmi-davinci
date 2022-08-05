@@ -6,7 +6,7 @@ type Table = {
 };
 
 export function useTables(date: string) {
-  const { data, error } = useSWR(`/tables?date=${date}`, get);
+  const { data, error } = useSWR(`/tables?date=${date}&location=1`, get);
 
   return {
     tableCount: data?.data?.filter((table: Table) => !table.finishHour).length,
