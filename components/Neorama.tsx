@@ -1,4 +1,3 @@
-import type { NextPage } from "next";
 import Image from "next/image";
 import { useTables } from "../utils/hooks/useTables";
 import { format } from "date-fns";
@@ -49,7 +48,7 @@ export const Neorama = ({ setLocation }: LocationSelectorProps) => {
   return (
     <div>
       <div className="w-full h-full flex flex-col bg-[#FBEEE2]">
-        <div className="flex justify-center w-full  font-germania text-2xl lg:text-4xl">
+        <div className="flex justify-center w-full font-germania text-2xl lg:text-4xl">
           <div
             className="text-center bg-dark-brown text-light-brown h-20 w-4/5 justify-center flex items-center cursor-pointer"
             onClick={() => setLocation(1)}

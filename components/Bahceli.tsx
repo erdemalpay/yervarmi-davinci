@@ -1,4 +1,3 @@
-import type { NextPage } from "next";
 import Image from "next/image";
 import { useTables } from "../utils/hooks/useTables";
 import { format } from "date-fns";
