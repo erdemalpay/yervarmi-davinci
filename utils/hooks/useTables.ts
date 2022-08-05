@@ -9,8 +9,7 @@ export function useTables(date: string) {
   const { data, error } = useSWR(`/tables?date=${date}`, get);
 
   return {
-    tableCount: data?.data?.tables.filter((table: Table) => !table.finishHour)
-      .length,
+    tableCount: data?.data?.filter((table: Table) => !table.finishHour).length,
     isLoading: !error && !data,
     isError: error,
   };
