@@ -24,7 +24,7 @@ export const Neorama = ({ setLocation }: LocationSelectorProps) => {
     message = `Evet ama dolmaya başlamış.`;
   } else if (availableTables > 0) {
     message = `Evet ama dolmak üzere. Yarım saat içinde geleceksen kafeyi arayarak yer ayırmalısın.`;
-  } else {
+  } else if (availableTables <= 0) {
     message = `Hayır maalesef şu an yer kalmamış. Gelmeyi planlıyorsan kafeyi arayarak sıraya ismini yazdırabilirsin.`;
   }
 
