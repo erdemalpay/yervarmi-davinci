@@ -9,7 +9,7 @@ import { PhoneIcon } from "../icons/PhoneIcon";
 import { MapIcon } from "../icons/MapIcon";
 import { LocationSelectorProps } from "./LocationSelector";
 
-const MAX_TABLE_COUNT = 28;
+const MAX_TABLE_COUNT = 26;
 
 export const Neorama = ({ setLocation }: LocationSelectorProps) => {
   const date = format(new Date(), "yyyy-MM-dd");
