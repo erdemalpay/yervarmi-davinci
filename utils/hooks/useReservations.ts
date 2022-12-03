@@ -21,7 +21,8 @@ export function useReservations(date: string, location: number) {
   return {
     reservedTableCount: data?.data?.filter(
       (reservation: Reservation) =>
-        reservation.status === ReservationStatusEnum.COMING
+        reservation.status === ReservationStatusEnum.COMING ||
+        reservation.status === ReservationStatusEnum.WAITING
     ).length,
     isError: error,
     isReservationsLoading: !error && !data,

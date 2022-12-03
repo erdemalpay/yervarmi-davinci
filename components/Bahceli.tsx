@@ -37,15 +37,15 @@ export const Bahceli = ({ setLocation }: LocationSelectorProps) => {
 
   for (let i = 0; i < tableCount; i++) {
     tables.push(
-      <div className="flex justify-center">
-        <TableIcon key={i} />
+      <div className="flex justify-center" key={i}>
+        <TableIcon />
       </div>
     );
   }
   for (let i = tableCount; i < MAX_TABLE_COUNT; i++) {
     tables.push(
-      <div className="flex justify-center">
-        <EmptyTableIcon key={i} />
+      <div className="flex justify-center" key={i}>
+        <EmptyTableIcon />
       </div>
     );
   }
