@@ -10,10 +10,9 @@ export function useTables(date: string, location: number) {
     `/tables?date=${date}&location=${location}`,
     get
   );
-  console.log({ data });
   return {
     tableCount: data?.data?.filter((table: Table) => !table.finishHour).length,
-    isLoading: !error && !data,
+    isTablesLoading: !error && !data,
     isError: error,
   };
 }

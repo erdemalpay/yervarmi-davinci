@@ -8,13 +8,18 @@ import { EmptyTableIcon } from "../icons/EmptyTableIcon";
 import { PhoneIcon } from "../icons/PhoneIcon";
 import { MapIcon } from "../icons/MapIcon";
 import { LocationSelectorProps } from "./LocationSelector";
+import { useReservations } from "../utils/hooks/useReservations";
 
 const MAX_TABLE_COUNT = 16;
 
 export const Bahceli = ({ setLocation }: LocationSelectorProps) => {
   const date = format(new Date(), "yyyy-MM-dd");
-  const { tableCount, isLoading } = useTables(date, 1);
-  const availableTables = MAX_TABLE_COUNT - tableCount;
+  const { tableCount, isTablesLoading } = useTables(date, 1);
+  const { reservedTableCount, isReservationsLoading } = useReservations(
+    date,
+    1
+  );
+  const availableTables = MAX_TABLE_COUNT - tableCount - reservedTableCount;
   let message = "";
   if (availableTables >= MAX_TABLE_COUNT) {
     message = `Evet tamamen boş. Henüz açılmamış olabilir mi?`;
@@ -65,7 +70,7 @@ export const Bahceli = ({ setLocation }: LocationSelectorProps) => {
         <div className="leading-[0] flex justify-center lg:mt-4">
           <Image src={gamePic} alt="Board Game" />
         </div>
-        {!isLoading && (
+        {!isTablesLoading && !isReservationsLoading && (
           <div className="px-8 pb-4 rounded-lg flex flex-col justify-center w-full">
             <div className="text-center text-dark-brown text-3xl lg:text-6xl font-germania">
               {`Da Vinci Bahçeli'de yer var mı?`}
