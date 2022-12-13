@@ -10,7 +10,7 @@ import { MapIcon } from "../icons/MapIcon";
 import { LocationSelectorProps } from "./LocationSelector";
 import { useReservations } from "../utils/hooks/useReservations";
 
-const MAX_TABLE_COUNT = 26;
+const MAX_TABLE_COUNT = 28;
 
 export const Neorama = ({ setLocation }: LocationSelectorProps) => {
   const date = format(new Date(), "yyyy-MM-dd");
