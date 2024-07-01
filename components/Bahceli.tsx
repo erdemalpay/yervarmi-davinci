@@ -1,63 +1,63 @@
 import Image from "next/image";
-import { useTables } from "../utils/hooks/useTables";
-import { format } from "date-fns";
+// import { useTables } from "../utils/hooks/useTables";
+// import { format } from "date-fns";
 import gamePic from "../public/boardgame.png";
 // import { Button } from "../components/Button";
-import { TableIcon } from "../icons/TableIcon";
-import { EmptyTableIcon } from "../icons/EmptyTableIcon";
+// import { TableIcon } from "../icons/TableIcon";
+// import { EmptyTableIcon } from "../icons/EmptyTableIcon";
 // import { PhoneIcon } from "../icons/PhoneIcon";
 // import { MapIcon } from "../icons/MapIcon";
 import { LocationSelectorProps } from "./LocationSelector";
-import { useReservations } from "../utils/hooks/useReservations";
+// import { useReservations } from "../utils/hooks/useReservations";
 
 const MAX_TABLE_COUNT = 16;
 
 export const Bahceli = ({ setLocation }: LocationSelectorProps) => {
-  const date = format(new Date(), "yyyy-MM-dd");
-  const { tableCount, isTablesLoading } = useTables(date, 1);
-  const { reservedTableCount, isReservationsLoading } = useReservations(
-    date,
-    1
-  );
+  // const date = format(new Date(), "yyyy-MM-dd");
+  // const { tableCount, isTablesLoading } = useTables(date, 1);
+  // const { reservedTableCount, isReservationsLoading } = useReservations(
+  //   date,
+  //   1
+  // );
 
-  const availableTables = MAX_TABLE_COUNT - tableCount - reservedTableCount;
   let message = "";
-  if (availableTables >= MAX_TABLE_COUNT) {
-    message = `Evet tamamen boş. Henüz açılmamış olabilir mi?`;
-  } else if (availableTables > 7) {
-    message = `Evet.`;
-  } else if (availableTables > 3) {
-    message = `Evet ama dolmaya başlamış.`;
-  } else if (availableTables > 0) {
-    message = `Evet ama dolmak üzere. Yarım saat içinde geleceksen kafeyi arayarak yer ayırmalısın.`;
-  } else if (availableTables <= 0) {
-    message = `Hayır maalesef şu an yer kalmamış. Gelmeyi planlıyorsan kafeyi arayarak sıraya ismini yazdırabilirsin.`;
-  }
+  // const availableTables = MAX_TABLE_COUNT - tableCount - reservedTableCount;
+  // if (availableTables >= MAX_TABLE_COUNT) {
+  //   message = `Evet tamamen boş. Henüz açılmamış olabilir mi?`;
+  // } else if (availableTables > 7) {
+  //   message = `Evet.`;
+  // } else if (availableTables > 3) {
+  //   message = `Evet ama dolmaya başlamış.`;
+  // } else if (availableTables > 0) {
+  //   message = `Evet ama dolmak üzere. Yarım saat içinde geleceksen kafeyi arayarak yer ayırmalısın.`;
+  // } else if (availableTables <= 0) {
+  //   message = `Hayır maalesef şu an yer kalmamış. Gelmeyi planlıyorsan kafeyi arayarak sıraya ismini yazdırabilirsin.`;
+  // }
 
   // this message is for the period when the cafe is closed
   message =
     "Temmuz ve Ağustos ayları boyunca tadilat nedeniyle kapalı olacağız. Sizleri Neorama şubemize bekleriz.";
   //////////////////////////////////////////////////////////////////
-  const tables = [];
+  // const tables = [];
 
-  for (
-    let i = 0;
-    i < Math.min(tableCount + reservedTableCount, MAX_TABLE_COUNT);
-    i++
-  ) {
-    tables.push(
-      <div className="flex justify-center" key={i}>
-        <TableIcon />
-      </div>
-    );
-  }
-  for (let i = tableCount + reservedTableCount; i < MAX_TABLE_COUNT; i++) {
-    tables.push(
-      <div className="flex justify-center" key={i}>
-        <EmptyTableIcon />
-      </div>
-    );
-  }
+  // for (
+  //   let i = 0;
+  //   i < Math.min(tableCount + reservedTableCount, MAX_TABLE_COUNT);
+  //   i++
+  // ) {
+  //   tables.push(
+  //     <div className="flex justify-center" key={i}>
+  //       <TableIcon />
+  //     </div>
+  //   );
+  // }
+  // for (let i = tableCount + reservedTableCount; i < MAX_TABLE_COUNT; i++) {
+  //   tables.push(
+  //     <div className="flex justify-center" key={i}>
+  //       <EmptyTableIcon />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div>
@@ -79,16 +79,16 @@ export const Bahceli = ({ setLocation }: LocationSelectorProps) => {
         <div className="leading-[0] flex justify-center lg:mt-4">
           <Image src={gamePic} alt="Board Game" />
         </div>
-        {!isTablesLoading && !isReservationsLoading && (
-          <div className="px-8 pb-4 rounded-lg flex flex-col justify-center w-full">
-            <div className="text-center text-dark-brown text-3xl lg:text-6xl font-germania">
-              {`Da Vinci Bahçeli'de yer var mı?`}
-            </div>
-            <div className="text-center text-dark-brown text-base lg:text-xl font-merriweather mt-4">
-              {message}
-            </div>
-            {/* temporarily closed */}
-            {/* {availableTables > 0 && (
+        {/* {!isTablesLoading && !isReservationsLoading && ( */}
+        <div className="px-8 pb-4 rounded-lg flex flex-col justify-center w-full">
+          <div className="text-center text-dark-brown text-3xl lg:text-6xl font-germania">
+            {`Da Vinci Bahçeli'de yer var mı?`}
+          </div>
+          <div className="text-center text-dark-brown text-base lg:text-xl font-merriweather mt-4">
+            {message}
+          </div>
+          {/* temporarily closed */}
+          {/* {availableTables > 0 && (
               <div className="text-center text-dark-brown text-base lg:text-xl font-merriweather font-bold">
                 {`Şu an ${availableTables} boş masa var.`}
               </div>
@@ -125,8 +125,8 @@ export const Bahceli = ({ setLocation }: LocationSelectorProps) => {
                 Yol tarifi al
               </Button>
             </div> */}
-          </div>
-        )}
+        </div>
+        {/* )} */}
       </div>
     </div>
   );
