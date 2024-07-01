@@ -10,7 +10,7 @@ import gamePic from "../public/boardgame.png";
 import { LocationSelectorProps } from "./LocationSelector";
 // import { useReservations } from "../utils/hooks/useReservations";
 
-const MAX_TABLE_COUNT = 16;
+// const MAX_TABLE_COUNT = 16;
 
 export const Bahceli = ({ setLocation }: LocationSelectorProps) => {
   // const date = format(new Date(), "yyyy-MM-dd");
