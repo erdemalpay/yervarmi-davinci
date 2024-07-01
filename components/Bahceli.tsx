@@ -19,7 +19,7 @@ export const Bahceli = ({ setLocation }: LocationSelectorProps) => {
     date,
     1
   );
-  console.log(tableCount, reservedTableCount);
+
   const availableTables = MAX_TABLE_COUNT - tableCount - reservedTableCount;
   let message = "";
   if (availableTables >= MAX_TABLE_COUNT) {
