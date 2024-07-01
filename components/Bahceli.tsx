@@ -2,11 +2,11 @@ import Image from "next/image";
 import { useTables } from "../utils/hooks/useTables";
 import { format } from "date-fns";
 import gamePic from "../public/boardgame.png";
-import { Button } from "../components/Button";
+// import { Button } from "../components/Button";
 import { TableIcon } from "../icons/TableIcon";
 import { EmptyTableIcon } from "../icons/EmptyTableIcon";
-import { PhoneIcon } from "../icons/PhoneIcon";
-import { MapIcon } from "../icons/MapIcon";
+// import { PhoneIcon } from "../icons/PhoneIcon";
+// import { MapIcon } from "../icons/MapIcon";
 import { LocationSelectorProps } from "./LocationSelector";
 import { useReservations } from "../utils/hooks/useReservations";
 
@@ -19,6 +19,7 @@ export const Bahceli = ({ setLocation }: LocationSelectorProps) => {
     date,
     1
   );
+  console.log(tableCount, reservedTableCount);
   const availableTables = MAX_TABLE_COUNT - tableCount - reservedTableCount;
   let message = "";
   if (availableTables >= MAX_TABLE_COUNT) {
@@ -33,6 +34,10 @@ export const Bahceli = ({ setLocation }: LocationSelectorProps) => {
     message = `Hayır maalesef şu an yer kalmamış. Gelmeyi planlıyorsan kafeyi arayarak sıraya ismini yazdırabilirsin.`;
   }
 
+  // this message is for the period when the cafe is closed
+  message =
+    "Temmuz ve Ağustos ayları boyunca tadilat nedeniyle kapalı olacağız. Sizleri Neorama şubemize bekleriz.";
+  //////////////////////////////////////////////////////////////////
   const tables = [];
 
   for (
@@ -82,7 +87,8 @@ export const Bahceli = ({ setLocation }: LocationSelectorProps) => {
             <div className="text-center text-dark-brown text-base lg:text-xl font-merriweather mt-4">
               {message}
             </div>
-            {availableTables > 0 && (
+            {/* temporarily closed */}
+            {/* {availableTables > 0 && (
               <div className="text-center text-dark-brown text-base lg:text-xl font-merriweather font-bold">
                 {`Şu an ${availableTables} boş masa var.`}
               </div>
@@ -118,7 +124,7 @@ export const Bahceli = ({ setLocation }: LocationSelectorProps) => {
               >
                 Yol tarifi al
               </Button>
-            </div>
+            </div> */}
           </div>
         )}
       </div>
