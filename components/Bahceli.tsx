@@ -19,8 +19,9 @@ export const Bahceli = ({ setLocation }: LocationSelectorProps) => {
     date,
     1
   );
-  const availableTables = MAX_TABLE_COUNT - tableCount - reservedTableCount;
+
   let message = "";
+  const availableTables = MAX_TABLE_COUNT - tableCount - reservedTableCount;
   if (availableTables >= MAX_TABLE_COUNT) {
     message = `Evet tamamen boş. Henüz açılmamış olabilir mi?`;
   } else if (availableTables > 7) {
@@ -74,53 +75,54 @@ export const Bahceli = ({ setLocation }: LocationSelectorProps) => {
         <div className="leading-[0] flex justify-center lg:mt-4">
           <Image src={gamePic} alt="Board Game" />
         </div>
-        {!isTablesLoading && !isReservationsLoading && (
-          <div className="px-8 pb-4 rounded-lg flex flex-col justify-center w-full">
-            <div className="text-center text-dark-brown text-3xl lg:text-6xl font-germania">
-              {`Da Vinci Bahçeli'de yer var mı?`}
+        {/* {!isTablesLoading && !isReservationsLoading && ( */}
+        <div className="px-8 pb-4 rounded-lg flex flex-col justify-center w-full">
+          <div className="text-center text-dark-brown text-3xl lg:text-6xl font-germania">
+            {`Da Vinci Bahçeli'de yer var mı?`}
+          </div>
+          <div className="text-center text-dark-brown text-base lg:text-xl font-merriweather mt-4">
+            {message}
+          </div>
+
+          {availableTables > 0 && (
+            <div className="text-center text-dark-brown text-base lg:text-xl font-merriweather font-bold">
+              {`Şu an ${availableTables} boş masa var.`}
             </div>
-            <div className="text-center text-dark-brown text-base lg:text-xl font-merriweather mt-4">
-              {message}
-            </div>
-            {availableTables > 0 && (
-              <div className="text-center text-dark-brown text-base lg:text-xl font-merriweather font-bold">
-                {`Şu an ${availableTables} boş masa var.`}
+          )}
+          <div className="flex justify-center w-full">
+            <div className="flex w-full lg:w-1/2">
+              <div className="p-4 grid grid-cols-4 w-full justify-center">
+                {tables}
               </div>
-            )}
-            <div className="flex justify-center w-full">
-              <div className="flex w-full lg:w-1/2">
-                <div className="p-4 grid grid-cols-4 w-full justify-center">
-                  {tables}
-                </div>
-              </div>
-            </div>
-            <div className="text-center text-dark-brown text-xs font-merriweather">
-              Emin olmak için kafeyi arayabilirsin.
-            </div>
-            <div className="flex flex-col mt-4 gap-2 lg:text-xl mx-2 lg:mx-80">
-              <Button
-                className="bg-dark-brown text-light-brown border-dark-brown"
-                borderstyles="border-dark-brown"
-                Icon={PhoneIcon}
-                onClick={() => (document.location.href = "tel:03128200301")}
-              >
-                Kafeyi Ara
-                <span className="hidden lg:inline">0312 820 03 01</span>
-              </Button>
-              <Button
-                className="bg-light-brown text-dark-brown "
-                borderstyles="border-light-brown"
-                Icon={MapIcon}
-                onClick={() =>
-                  (document.location.href =
-                    "https://www.google.com/maps/dir/?api=1&destination=Da+Vinci+Board+Game+Cafe")
-                }
-              >
-                Yol tarifi al
-              </Button>
             </div>
           </div>
-        )}
+          <div className="text-center text-dark-brown text-xs font-merriweather">
+            Emin olmak için kafeyi arayabilirsin.
+          </div>
+          <div className="flex flex-col mt-4 gap-2 lg:text-xl mx-2 lg:mx-80">
+            <Button
+              className="bg-dark-brown text-light-brown border-dark-brown"
+              borderstyles="border-dark-brown"
+              Icon={PhoneIcon}
+              onClick={() => (document.location.href = "tel:03128200301")}
+            >
+              Kafeyi Ara
+              <span className="hidden lg:inline">0312 820 03 01</span>
+            </Button>
+            <Button
+              className="bg-light-brown text-dark-brown "
+              borderstyles="border-light-brown"
+              Icon={MapIcon}
+              onClick={() =>
+                (document.location.href =
+                  "https://www.google.com/maps/dir/?api=1&destination=Da+Vinci+Board+Game+Cafe")
+              }
+            >
+              Yol tarifi al
+            </Button>
+          </div>
+        </div>
+        {/* )} */}
       </div>
     </div>
   );
