@@ -3,6 +3,7 @@ import { get } from "../api";
 
 type Table = {
   finishHour: string;
+  isOnlineSale?: boolean;
 };
 
 export function useTables(date: string, location: number) {
@@ -11,7 +12,9 @@ export function useTables(date: string, location: number) {
     get
   );
   return {
-    tableCount: data?.data?.filter((table: Table) => !table.finishHour).length,
+    tableCount: data?.data?.filter(
+      (table: Table) => !table.finishHour && !table?.isOnlineSale
+    )?.length,
     isTablesLoading: !error && !data,
     isError: error,
   };
