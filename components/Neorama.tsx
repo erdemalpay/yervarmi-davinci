@@ -19,7 +19,7 @@ export const Neorama = ({ setLocation }: LocationSelectorProps) => {
     date,
     2
   );
-  const availableTables = MAX_TABLE_COUNT - tableCount - reservedTableCount;
+  const availableTables = MAX_TABLE_COUNT - tableCount;
   let message = "";
   if (availableTables >= MAX_TABLE_COUNT) {
     message = `Evet tamamen boş. Henüz açılmamış olabilir mi?`;
@@ -35,18 +35,14 @@ export const Neorama = ({ setLocation }: LocationSelectorProps) => {
 
   const tables = [];
 
-  for (
-    let i = 0;
-    i < Math.min(tableCount + reservedTableCount, MAX_TABLE_COUNT);
-    i++
-  ) {
+  for (let i = 0; i < Math.min(tableCount, MAX_TABLE_COUNT); i++) {
     tables.push(
       <div className="flex justify-center" key={i}>
         <TableIcon />
       </div>
     );
   }
-  for (let i = tableCount + reservedTableCount; i < MAX_TABLE_COUNT; i++) {
+  for (let i = tableCount; i < MAX_TABLE_COUNT; i++) {
     tables.push(
       <div className="flex justify-center" key={i}>
         <EmptyTableIcon />
@@ -74,7 +70,7 @@ export const Neorama = ({ setLocation }: LocationSelectorProps) => {
         <div className="leading-[0] flex justify-center lg:mt-4">
           <Image src={gamePic} alt="Board Game" />
         </div>
-        {!isTablesLoading && !isReservationsLoading && (
+        {!isTablesLoading && (
           <div className="px-8 pb-4 rounded-lg flex flex-col justify-center w-full">
             <div className="text-center text-dark-brown text-3xl lg:text-6xl font-germania">
               {`Da Vinci Neorama'da yer var mı?`}
