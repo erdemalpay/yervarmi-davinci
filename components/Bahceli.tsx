@@ -21,7 +21,7 @@ export const Bahceli = ({ setLocation }: LocationSelectorProps) => {
   );
 
   let message = "";
-  const availableTables = MAX_TABLE_COUNT - tableCount - reservedTableCount;
+  const availableTables = MAX_TABLE_COUNT - tableCount;
   if (availableTables >= MAX_TABLE_COUNT) {
     message = `Evet tamamen boş. Henüz açılmamış olabilir mi?`;
   } else if (availableTables > 7) {
@@ -36,18 +36,14 @@ export const Bahceli = ({ setLocation }: LocationSelectorProps) => {
 
   const tables = [];
 
-  for (
-    let i = 0;
-    i < Math.min(tableCount + reservedTableCount, MAX_TABLE_COUNT);
-    i++
-  ) {
+  for (let i = 0; i < Math.min(tableCount, MAX_TABLE_COUNT); i++) {
     tables.push(
       <div className="flex justify-center" key={i}>
         <TableIcon />
       </div>
     );
   }
-  for (let i = tableCount + reservedTableCount; i < MAX_TABLE_COUNT; i++) {
+  for (let i = tableCount; i < MAX_TABLE_COUNT; i++) {
     tables.push(
       <div className="flex justify-center" key={i}>
         <EmptyTableIcon />
