@@ -8,18 +8,12 @@ import { EmptyTableIcon } from "../icons/EmptyTableIcon";
 import { PhoneIcon } from "../icons/PhoneIcon";
 import { MapIcon } from "../icons/MapIcon";
 import { LocationSelectorProps } from "./LocationSelector";
-import { useReservations } from "../utils/hooks/useReservations";
 
 const MAX_TABLE_COUNT = 16;
 
 export const Bahceli = ({ setLocation }: LocationSelectorProps) => {
   const date = format(new Date(), "yyyy-MM-dd");
   const { tableCount, isTablesLoading } = useTables(date, 1);
-  const { reservedTableCount, isReservationsLoading } = useReservations(
-    date,
-    1
-  );
-
   let message = "";
   const availableTables = MAX_TABLE_COUNT - tableCount;
   if (availableTables >= MAX_TABLE_COUNT) {
