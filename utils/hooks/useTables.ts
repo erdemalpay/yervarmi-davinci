@@ -8,7 +8,7 @@ type Table = {
 
 export function useTables(date: string, location: number) {
   const { data, error } = useSWR(
-    `/yer_varmi/tables?date=${date}&location=${location}`,
+    `/tables/yer_varmi?date=${date}&location=${location}`,
     get
   );
   return {
