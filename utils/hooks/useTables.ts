@@ -8,13 +8,11 @@ type Table = {
 
 export function useTables(date: string, location: number) {
   const { data, error } = useSWR(
-    `/tables?date=${date}&location=${location}`,
+    `/yer_varmi/tables?date=${date}&location=${location}`,
     get
   );
   return {
-    tableCount: data?.data?.filter(
-      (table: Table) => !table.finishHour && !table?.isOnlineSale
-    )?.length,
+    tableCount: data?.data,
     isTablesLoading: !error && !data,
     isError: error,
   };

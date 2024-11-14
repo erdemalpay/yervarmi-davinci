@@ -8,17 +8,12 @@ import { EmptyTableIcon } from "../icons/EmptyTableIcon";
 import { PhoneIcon } from "../icons/PhoneIcon";
 import { MapIcon } from "../icons/MapIcon";
 import { LocationSelectorProps } from "./LocationSelector";
-import { useReservations } from "../utils/hooks/useReservations";
 
 const MAX_TABLE_COUNT = 28;
 
 export const Neorama = ({ setLocation }: LocationSelectorProps) => {
   const date = format(new Date(), "yyyy-MM-dd");
   const { tableCount, isTablesLoading } = useTables(date, 2);
-  const { reservedTableCount, isReservationsLoading } = useReservations(
-    date,
-    2
-  );
   const availableTables = MAX_TABLE_COUNT - tableCount;
   let message = "";
   if (availableTables >= MAX_TABLE_COUNT) {
