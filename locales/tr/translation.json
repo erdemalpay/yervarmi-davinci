@@ -1,0 +1,23 @@
+{
+  "common": {
+    "appName": "Da Vinci Board Game Cafe",
+    "title": "Da Vinci'de yer var mı?"
+  },
+  "home": {
+    "selectLocation": "Da Vinci'de yer var mı?"
+  },
+  "location": {
+    "title": "Da Vinci {{locationName}}'de yer var mı?",
+    "availableTables": "Şu an {{count}} boş masa var.",
+    "callCafe": "Emin olmak için kafeyi arayabilirsin.",
+    "callButton": "Kafeyi Ara",
+    "directionsButton": "Yol tarifi al"
+  },
+  "availability": {
+    "fullyEmpty": "Evet tamamen boş. Henüz açılmamış olabilir mi?",
+    "available": "Evet.",
+    "fillingUp": "Evet ama dolmaya başlamış.",
+    "almostFull": "Evet ama dolmak üzere. Yarım saat içinde geleceksen kafeyi arayarak yer ayırmalısın.",
+    "noSpace": "Hayır maalesef şu an yer kalmamış. Gelmeyi planlıyorsan kafeyi arayarak sıraya ismini yazdırabilirsin."
+  }
+}

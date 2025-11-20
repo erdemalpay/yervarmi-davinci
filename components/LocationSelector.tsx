@@ -1,5 +1,6 @@
 import { Button } from "./Button";
 import { Location } from "../utils/hooks/useLocations";
+import { useTranslation } from "react-i18next";
 
 export interface LocationSelectorProps {
   locations: Location[];
@@ -10,10 +11,12 @@ export function LocationSelector({
   locations,
   setLocation,
 }: LocationSelectorProps) {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-col h-full mt-4 gap-10 lg:text-xl mx-2 lg:mx-[400px] justify-center">
       <div className="text-center text-dark-brown text-3xl lg:text-6xl font-germania">
-        {`Da Vinci'de yer var mı?`}
+        {t("home.selectLocation")}
       </div>
       {locations.map((location, index) => (
         <Button

@@ -3,11 +3,14 @@ import Image from "next/image";
 import Head from "next/head";
 import titleBackground from "../public/title-background.png";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { LocationSelector } from "../components/LocationSelector";
 import { LocationPage } from "../components/LocationPage";
 import { useLocations } from "../utils/hooks/useLocations";
+import { LanguageToggle } from "../components/LanguageToggle";
 
 const Home: NextPage = () => {
+  const { t } = useTranslation();
   const [selectedLocationId, setSelectedLocationId] = useState(0);
   const { locations, isLocationsLoading } = useLocations();
 
@@ -19,7 +22,7 @@ const Home: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>{`Da Vinci'de yer var mı?`}</title>
+        <title>{t("common.title")}</title>
         <link
           rel="apple-touch-icon"
           sizes="57x57"
@@ -112,7 +115,10 @@ const Home: NextPage = () => {
             />
             <div className="text-light-brown text-2xl h-full relative font-germania">
               <div className="flex justify-center items-center h-full">
-                Da Vinci Board Game Cafe
+                {t("common.appName")}
+              </div>
+              <div className="absolute top-2 right-4">
+                <LanguageToggle />
               </div>
             </div>
           </div>

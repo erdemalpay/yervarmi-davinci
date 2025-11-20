@@ -9,6 +9,7 @@ import { PhoneIcon } from "../icons/PhoneIcon";
 import { MapIcon } from "../icons/MapIcon";
 import { Location } from "../utils/hooks/useLocations";
 import { formatPhoneNumber } from "../utils/formatters";
+import { useTranslation } from "react-i18next";
 
 type LocationViewProps = {
   location: Location;
@@ -21,6 +22,7 @@ export const LocationPage = ({
   allLocations,
   onLocationChange,
 }: LocationViewProps) => {
+  const { t } = useTranslation();
   const date = format(new Date(), "yyyy-MM-dd");
   const { tableCount, isTablesLoading } = useTables(date, location._id);
   const numericTableCount = Number(location.tableCount) || 0;
@@ -34,15 +36,15 @@ export const LocationPage = ({
     : 1;
 
   if (fullnessPercentage >= 1) {
-    message = `Evet tamamen boş. Henüz açılmamış olabilir mi?`;
+    message = t("availability.fullyEmpty");
   } else if (fullnessPercentage > 0.4) {
-    message = `Evet.`;
+    message = t("availability.available");
   } else if (fullnessPercentage > 0.2) {
-    message = `Evet ama dolmaya başlamış.`;
+    message = t("availability.fillingUp");
   } else if (fullnessPercentage > 0) {
-    message = `Evet ama dolmak üzere. Yarım saat içinde geleceksen kafeyi arayarak yer ayırmalısın.`;
+    message = t("availability.almostFull");
   } else {
-    message = `Hayır maalesef şu an yer kalmamış. Gelmeyi planlıyorsan kafeyi arayarak sıraya ismini yazdırabilirsin.`;
+    message = t("availability.noSpace");
   }
 
   const tables = [];
@@ -77,14 +79,14 @@ export const LocationPage = ({
         {!isTablesLoading && (
           <div className="px-4 pb-2 rounded-lg flex flex-col justify-center w-full">
             <div className="text-center text-dark-brown text-3xl lg:text-6xl font-germania">
-              {`Da Vinci ${location.name}'de yer var mı?`}
+              {t("location.title", { locationName: location.name })}
             </div>
             <div className="text-center text-dark-brown text-base lg:text-xl font-merriweather mt-2">
               {message}
             </div>
             {availableTables > 0 && (
               <div className="text-center text-dark-brown text-base lg:text-xl font-merriweather font-bold">
-                {`Şu an ${availableTables} boş masa var.`}
+                {t("location.availableTables", { count: availableTables })}
               </div>
             )}
             <div className="flex justify-center w-full">
@@ -98,7 +100,7 @@ export const LocationPage = ({
               </div>
             </div>
             <div className="text-center text-dark-brown text-xs font-merriweather">
-              Emin olmak için kafeyi arayabilirsin.
+              {t("location.callCafe")}
             </div>
             <div className="flex flex-col mt-2 gap-1 lg:text-xl mx-2 lg:mx-80">
               {location.phoneNumber && (
@@ -110,7 +112,7 @@ export const LocationPage = ({
                     (document.location.href = `tel:${location.phoneNumber}`)
                   }
                 >
-                  Kafeyi Ara
+                  {t("location.callButton")}
                   <span className="hidden lg:inline">{formatPhoneNumber(location.phoneNumber)}</span>
                 </Button>
               )}
@@ -121,7 +123,7 @@ export const LocationPage = ({
                   Icon={MapIcon}
                   onClick={() => (document.location.href = mapsHref)}
                 >
-                  Yol tarifi al
+                  {t("location.directionsButton")}
                 </Button>
               )}
             </div>
