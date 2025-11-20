@@ -18,6 +18,20 @@
     "available": "Evet.",
     "fillingUp": "Evet ama dolmaya başlamış.",
     "almostFull": "Evet ama dolmak üzere. Yarım saat içinde geleceksen kafeyi arayarak yer ayırmalısın.",
-    "noSpace": "Hayır maalesef şu an yer kalmamış. Gelmeyi planlıyorsan kafeyi arayarak sıraya ismini yazdırabilirsin."
+    "noSpace": "Hayır maalesef şu an yer kalmamış. Gelmeyi planlıyorsan kafeyi arayarak sıraya ismini yazdırabilirsin.",
+    "closedToday": "Üzgünüz, bugün kapalıyız.",
+    "closedDays": "Üzgünüz, {{days}} günleri kapalıyız.",
+    "closedNow": "Şu an kapalıyız. Çalışma saatlerimiz: {{hours}}",
+    "opensAt": "Bugün saat {{time}}'de açılıyoruz.",
+    "closesAt": "Bugün saat {{time}}'de kapanıyoruz."
+  },
+  "days": {
+    "Monday": "Pazartesi",
+    "Tuesday": "Salı",
+    "Wednesday": "Çarşamba",
+    "Thursday": "Perşembe",
+    "Friday": "Cuma",
+    "Saturday": "Cumartesi",
+    "Sunday": "Pazar"
   }
 }

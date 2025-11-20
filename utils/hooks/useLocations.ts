@@ -1,6 +1,13 @@
 import useSWR from "swr";
 import { get } from "../api";
 
+export type DailyHours = {
+  day: string;
+  openingTime?: string;
+  closingTime?: string;
+  isClosed?: boolean;
+};
+
 export type Location = {
   _id: number;
   name: string;
@@ -8,6 +15,7 @@ export type Location = {
   tableCount: string;
   phoneNumber: string;
   googleMapsUrl?: string;
+  dailyHours?: DailyHours[];
 };
 
 export function useLocations() {
