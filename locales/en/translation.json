@@ -1,0 +1,37 @@
+{
+  "common": {
+    "appName": "Da Vinci Board Game Cafe",
+    "title": "Is there space at Da Vinci?"
+  },
+  "home": {
+    "selectLocation": "Is there space at Da Vinci?"
+  },
+  "location": {
+    "title": "Is there space at Da Vinci {{locationName}}?",
+    "availableTables": "There are currently {{count}} available tables.",
+    "callCafe": "You can call the cafe to be sure.",
+    "callButton": "Call Cafe",
+    "directionsButton": "Get Directions"
+  },
+  "availability": {
+    "fullyEmpty": "Yes, completely empty. Maybe it hasn't opened yet?",
+    "available": "Yes.",
+    "fillingUp": "Yes, but it's starting to fill up.",
+    "almostFull": "Yes, but it's almost full. If you're coming within half an hour, you should call the cafe to reserve a spot.",
+    "noSpace": "Unfortunately, there's no space available right now. If you're planning to come, you can call the cafe to add your name to the waitlist.",
+    "closedToday": "Sorry, we're closed today.",
+    "closedDays": "Sorry, We're closed on {{days}}.",
+    "closedNow": "We're currently closed. Our hours: {{hours}}",
+    "opensAt": "We open today at {{time}}.",
+    "closesAt": "We close today at {{time}}."
+  },
+  "days": {
+    "Monday": "Monday",
+    "Tuesday": "Tuesday",
+    "Wednesday": "Wednesday",
+    "Thursday": "Thursday",
+    "Friday": "Friday",
+    "Saturday": "Saturday",
+    "Sunday": "Sunday"
+  }
+}
