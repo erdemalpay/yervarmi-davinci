@@ -2,7 +2,7 @@
   "name": "yervarmi-davinci",
   "private": true,
   "scripts": {
-    "start": "next dev -p 3001",
+    "start": "next dev -p 3002",
     "build": "next build",
     "serve": "next start -p 3001",
     "lint": "next lint"

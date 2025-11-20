@@ -8,6 +8,7 @@ import { EmptyTableIcon } from "../icons/EmptyTableIcon";
 import { PhoneIcon } from "../icons/PhoneIcon";
 import { MapIcon } from "../icons/MapIcon";
 import { Location } from "../utils/hooks/useLocations";
+import { formatPhoneNumber } from "../utils/formatters";
 
 type LocationViewProps = {
   location: Location;
@@ -22,13 +23,14 @@ export const LocationPage = ({
 }: LocationViewProps) => {
   const date = format(new Date(), "yyyy-MM-dd");
   const { tableCount, isTablesLoading } = useTables(date, location._id);
-  const availableTables = location.tableCount - tableCount;
-
-  const gridColumns = Math.floor(location.tableCount / 4);
+  const numericTableCount = Number(location.tableCount) || 0;
+  const availableTables = numericTableCount - tableCount;
+  const gridColumns = Math.max(1, Math.floor(numericTableCount / 4) || 1);
+  const mapsHref = location.googleMapsUrl;
 
   let message = "";
-  const fullnessPercentage = location.tableCount > 0
-    ? availableTables / location.tableCount
+  const fullnessPercentage = numericTableCount > 0
+    ? availableTables / numericTableCount
     : 1;
 
   if (fullnessPercentage >= 1) {
@@ -44,10 +46,10 @@ export const LocationPage = ({
   }
 
   const tables = [];
-  for (let i = 0; i < Math.min(tableCount, location.tableCount); i++) {
+  for (let i = 0; i < Math.min(tableCount, numericTableCount); i++) {
     tables.push(<TableIcon key={i} />);
   }
-  for (let i = tableCount; i < location.tableCount; i++) {
+  for (let i = tableCount; i < numericTableCount; i++) {
     tables.push(<EmptyTableIcon key={i} />);
   }
 
@@ -69,15 +71,15 @@ export const LocationPage = ({
             </div>
           ))}
         </div>
-        <div className="leading-[0] flex justify-center lg:mt-4">
+        <div className="leading-[0] flex justify-center lg:mt-1">
           <Image src={gamePic} alt="Board Game" />
         </div>
         {!isTablesLoading && (
-          <div className="px-8 pb-4 rounded-lg flex flex-col justify-center w-full">
+          <div className="px-4 pb-2 rounded-lg flex flex-col justify-center w-full">
             <div className="text-center text-dark-brown text-3xl lg:text-6xl font-germania">
               {`Da Vinci ${location.name}'de yer var mı?`}
             </div>
-            <div className="text-center text-dark-brown text-base lg:text-xl font-merriweather mt-4">
+            <div className="text-center text-dark-brown text-base lg:text-xl font-merriweather mt-2">
               {message}
             </div>
             {availableTables > 0 && (
@@ -88,7 +90,7 @@ export const LocationPage = ({
             <div className="flex justify-center w-full">
               <div className="flex justify-center w-full lg:w-1/2">
                 <div
-                  className="p-4 grid gap-6 w-full max-w-2xl"
+                  className="p-2 grid gap-1 w-full max-w-2xl"
                   style={{ gridTemplateColumns: `repeat(${gridColumns}, minmax(0, 1fr))` }}
                 >
                   {tables}
@@ -98,26 +100,30 @@ export const LocationPage = ({
             <div className="text-center text-dark-brown text-xs font-merriweather">
               Emin olmak için kafeyi arayabilirsin.
             </div>
-            <div className="flex flex-col mt-4 gap-2 lg:text-xl mx-2 lg:mx-80">
-              <Button
-                className="bg-dark-brown text-light-brown border-dark-brown"
-                borderstyles="border-dark-brown"
-                Icon={PhoneIcon}
-                onClick={() =>
-                  (document.location.href = `tel:${location.phoneNumber}`)
-                }
-              >
-                Kafeyi Ara
-                <span className="hidden lg:inline">{location.phoneNumber}</span>
-              </Button>
-              <Button
-                className="bg-light-brown text-dark-brown "
-                borderstyles="border-light-brown"
-                Icon={MapIcon}
-                onClick={() => (document.location.href = location.mapsUrl)}
-              >
-                Yol tarifi al
-              </Button>
+            <div className="flex flex-col mt-2 gap-1 lg:text-xl mx-2 lg:mx-80">
+              {location.phoneNumber && (
+                <Button
+                  className="bg-dark-brown text-light-brown border-dark-brown"
+                  borderstyles="border-dark-brown"
+                  Icon={PhoneIcon}
+                  onClick={() =>
+                    (document.location.href = `tel:${location.phoneNumber}`)
+                  }
+                >
+                  Kafeyi Ara
+                  <span className="hidden lg:inline">{formatPhoneNumber(location.phoneNumber)}</span>
+                </Button>
+              )}
+              {mapsHref && (
+                <Button
+                  className="bg-light-brown text-dark-brown "
+                  borderstyles="border-light-brown"
+                  Icon={MapIcon}
+                  onClick={() => (document.location.href = mapsHref)}
+                >
+                  Yol tarifi al
+                </Button>
+              )}
             </div>
           </div>
         )}

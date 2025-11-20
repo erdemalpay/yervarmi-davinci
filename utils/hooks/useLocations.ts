@@ -5,10 +5,9 @@ export type Location = {
   _id: number;
   name: string;
   active: boolean;
-  tableCount: number;
-  gridColumns: number;
+  tableCount: string;
   phoneNumber: string;
-  mapsUrl: string;
+  googleMapsUrl?: string;
 };
 
 export function useLocations() {
