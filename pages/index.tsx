@@ -2,13 +2,20 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import Head from "next/head";
 import titleBackground from "../public/title-background.png";
-import { Bahceli } from "../components/Bahceli";
 import { useState } from "react";
 import { LocationSelector } from "../components/LocationSelector";
-import { Neorama } from "../components/Neorama";
+import { LocationPage } from "../components/LocationPage";
+import { useLocations } from "../utils/hooks/useLocations";
 
 const Home: NextPage = () => {
   const [selectedLocationId, setSelectedLocationId] = useState(0);
+  const { locations, isLocationsLoading } = useLocations();
+
+  const selectedLocation =
+    locations && selectedLocationId > 0
+      ? locations.find((loc) => loc._id === selectedLocationId)
+      : undefined;
+
   return (
     <div>
       <Head>
@@ -110,14 +117,22 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
-        {selectedLocationId === 0 && (
-          <LocationSelector setLocation={setSelectedLocationId} />
-        )}
-        {selectedLocationId === 1 && (
-          <Bahceli setLocation={setSelectedLocationId} />
-        )}
-        {selectedLocationId === 2 && (
-          <Neorama setLocation={setSelectedLocationId} />
+        {!isLocationsLoading && locations && (
+          <>
+            {selectedLocationId === 0 && (
+              <LocationSelector
+                locations={locations}
+                setLocation={setSelectedLocationId}
+              />
+            )}
+            {selectedLocation && (
+              <LocationPage
+                location={selectedLocation}
+                allLocations={locations}
+                onLocationChange={setSelectedLocationId}
+              />
+            )}
+          </>
         )}
       </div>
     </div>
