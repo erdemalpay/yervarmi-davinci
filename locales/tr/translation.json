@@ -14,7 +14,7 @@
     "directionsButton": "Yol tarifi al"
   },
   "availability": {
-    "fullyEmpty": "Evet tamamen boş. Henüz açılmamış olabilir mi?",
+    "fullyEmpty": "Evet tamamen boş..",    
     "available": "Evet.",
     "fillingUp": "Evet ama dolmaya başlamış.",
     "almostFull": "Evet ama dolmak üzere. Yarım saat içinde geleceksen kafeyi arayarak yer ayırmalısın.",
@@ -23,7 +23,8 @@
     "closedDays": "Üzgünüz, {{days}} günleri kapalıyız.",
     "closedNow": "Şu an kapalıyız. Çalışma saatlerimiz: {{hours}}",
     "opensAt": "Bugün saat {{time}}'de açılıyoruz.",
-    "closesAt": "Bugün saat {{time}}'de kapanıyoruz."
+    "closesAt": "Bugün saat {{time}}'de kapanıyoruz.",
+    "temporarilyClosed": "Geçici olarak kapalıyız."
   },
   "days": {
     "Monday": "Pazartesi",

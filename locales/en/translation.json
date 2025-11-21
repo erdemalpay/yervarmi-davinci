@@ -14,7 +14,7 @@
     "directionsButton": "Get Directions"
   },
   "availability": {
-    "fullyEmpty": "Yes, completely empty. Maybe it hasn't opened yet?",
+    "fullyEmpty": "Yes, completely empty..",
     "available": "Yes.",
     "fillingUp": "Yes, but it's starting to fill up.",
     "almostFull": "Yes, but it's almost full. If you're coming within half an hour, you should call the cafe to reserve a spot.",
@@ -23,7 +23,8 @@
     "closedDays": "Sorry, We're closed on {{days}}.",
     "closedNow": "We're currently closed. Our hours: {{hours}}",
     "opensAt": "We open today at {{time}}.",
-    "closesAt": "We close today at {{time}}."
+    "closesAt": "We close today at {{time}}.",
+    "temporarilyClosed": "We are temporarily closed."
   },
   "days": {
     "Monday": "Monday",

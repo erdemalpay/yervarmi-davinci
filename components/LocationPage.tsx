@@ -25,66 +25,73 @@ export const LocationPage = ({
   const { t } = useTranslation();
   const date = format(new Date(), "yyyy-MM-dd");
   const { tableCount, isTablesLoading } = useTables(date, location._id);
-  const numericTableCount = Number(location.tableCount) || 0;
+  const numericTableCount = Number(location.tableCount)-1 || 0;
   const availableTables = numericTableCount - tableCount;
   const gridColumns = Math.max(1, Math.floor(numericTableCount / 4) || 1);
   const mapsHref = location.googleMapsUrl;
 
-  // Get current day and time
-  const now = new Date();
-  const currentDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][now.getDay()];
-  const currentTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
-
-  // Find today's hours
-  const todayHours = location.dailyHours?.find(dh => dh.day === currentDay);
-
-  // Get all closed days for display
-  const closedDays = location.dailyHours
-    ?.filter(dh => dh.isClosed)
-    .map(dh => t(`days.${dh.day}`))
-    .join(", ");
-
+  // Check if location is active
   let message = "";
   let isOpen = true;
 
-  // Check if closed today
-  if (todayHours?.isClosed) {
-    if (closedDays) {
-      message = t("availability.closedDays", { days: closedDays });
-    } else {
-      message = t("availability.closedToday");
-    }
+  if (!location.active) {
+    // If location is not active, show activity note and skip all other logic
+    message = location.activityNote || t("availability.temporarilyClosed");
     isOpen = false;
-  } else if (todayHours?.openingTime && todayHours?.closingTime) {
-    // Check if we're within operating hours
-    const isBeforeOpening = currentTime < todayHours.openingTime;
-    const isAfterClosing = currentTime >= todayHours.closingTime;
+  } else {
+    // Get current day and time
+    const now = new Date();
+    const currentDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][now.getDay()];
+    const currentTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
 
-    if (isBeforeOpening) {
-      message = t("availability.opensAt", { time: todayHours.openingTime });
+    // Find today's hours
+    const todayHours = location.dailyHours?.find(dh => dh.day === currentDay);
+
+    // Get all closed days for display
+    const closedDays = location.dailyHours
+      ?.filter(dh => dh.isClosed)
+      .map(dh => t(`days.${dh.day}`))
+      .join(", ");
+
+    // Check if closed today
+    if (todayHours?.isClosed) {
+      if (closedDays) {
+        message = t("availability.closedDays", { days: closedDays });
+      } else {
+        message = t("availability.closedToday");
+      }
       isOpen = false;
-    } else if (isAfterClosing) {
-      message = t("availability.closedNow", { hours: `${todayHours.openingTime} - ${todayHours.closingTime}` });
-      isOpen = false;
+    } else if (todayHours?.openingTime && todayHours?.closingTime) {
+      // Check if we're within operating hours
+      const isBeforeOpening = currentTime < todayHours.openingTime;
+      const isAfterClosing = currentTime >= todayHours.closingTime;
+
+      if (isBeforeOpening) {
+        message = t("availability.opensAt", { time: todayHours.openingTime });
+        isOpen = false;
+      } else if (isAfterClosing) {
+        message = t("availability.closedNow", { hours: `${todayHours.openingTime} - ${todayHours.closingTime}` });
+        isOpen = false;
+      }
     }
-  }
 
-  // If open, show occupancy-based message
-  if (isOpen) {
-    const fullnessPercentage = numericTableCount > 0
-      ? availableTables / numericTableCount
-      : 1;
+    // If open, show occupancy-based message
+    if (isOpen) {
+      const fullnessPercentage = numericTableCount > 0
+        ? availableTables / numericTableCount
+        : 1;
 
-    if (fullnessPercentage >= 1) {
-      message = t("availability.fullyEmpty");
-    } else if (fullnessPercentage > 0.4) {
-      message = t("availability.available");
-    } else if (fullnessPercentage > 0.2) {
-      message = t("availability.fillingUp");
-    } else if (fullnessPercentage > 0) {
-      message = t("availability.almostFull");
-    } else {
-      message = t("availability.noSpace");
+      if (fullnessPercentage >= 1) {
+        message = t("availability.fullyEmpty");
+      } else if (fullnessPercentage > 0.4) {
+        message = t("availability.available");
+      } else if (fullnessPercentage > 0.2) {
+        message = t("availability.fillingUp");
+      } else if (fullnessPercentage > 0) {
+        message = t("availability.almostFull");
+      } else {
+        message = t("availability.noSpace");
+      }
     }
   }
 
