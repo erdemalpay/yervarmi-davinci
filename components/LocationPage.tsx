@@ -30,30 +30,27 @@ export const LocationPage = ({
   const gridColumns = Math.max(1, Math.floor(numericTableCount / 4) || 1);
   const mapsHref = location.googleMapsUrl;
 
-  // Check if location is active
   let message = "";
   let isOpen = true;
 
   if (!location.active) {
-    // If location is not active, show activity note and skip all other logic
+    
     message = location.activityNote || t("availability.temporarilyClosed");
     isOpen = false;
   } else {
-    // Get current day and time
+    
     const now = new Date();
-    const currentDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][now.getDay()];
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const currentDay = days[now.getDay()];
     const currentTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
 
-    // Find today's hours
     const todayHours = location.dailyHours?.find(dh => dh.day === currentDay);
 
-    // Get all closed days for display
     const closedDays = location.dailyHours
       ?.filter(dh => dh.isClosed)
       .map(dh => t(`days.${dh.day}`))
       .join(", ");
 
-    // Check if closed today
     if (todayHours?.isClosed) {
       if (closedDays) {
         message = t("availability.closedDays", { days: closedDays });
@@ -62,7 +59,7 @@ export const LocationPage = ({
       }
       isOpen = false;
     } else if (todayHours?.openingTime && todayHours?.closingTime) {
-      // Check if we're within operating hours
+      
       const isBeforeOpening = currentTime < todayHours.openingTime;
       const isAfterClosing = currentTime >= todayHours.closingTime;
 
@@ -75,7 +72,6 @@ export const LocationPage = ({
       }
     }
 
-    // If open, show occupancy-based message
     if (isOpen) {
       const fullnessPercentage = numericTableCount > 0
         ? availableTables / numericTableCount
