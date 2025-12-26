@@ -12,6 +12,7 @@ export type Location = {
   _id: number;
   name: string;
   active: boolean;
+  activityNote?: string;
   tableCount: string;
   phoneNumber: string;
   googleMapsUrl?: string;
