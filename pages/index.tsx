@@ -11,7 +11,13 @@ import { LanguageToggle } from "../components/LanguageToggle";
 
 const Home: NextPage = () => {
   const { t } = useTranslation();
-  const [selectedLocationId, setSelectedLocationId] = useState(0);
+
+  // TEMPORARY: Şu an sadece bir lokasyon aktif olduğu için direkt _id: 2'yi gösteriyoruz
+  // İleride birden fazla lokasyon açıldığında bu magic number'ı kaldırıp
+  // LocationSelector'ı tekrar aktif etmek için 0 ile başlatın
+  const ACTIVE_LOCATION_ID = 2; // Magic number: Şu an aktif tek lokasyonun ID'si
+  const [selectedLocationId, setSelectedLocationId] = useState(ACTIVE_LOCATION_ID); // Çoklu lokasyon için: useState(0)
+
   const { locations, isLocationsLoading } = useLocations();
 
   const selectedLocation =
@@ -125,12 +131,14 @@ const Home: NextPage = () => {
         </div>
         {!isLocationsLoading && locations && (
           <>
-            {selectedLocationId === 0 && (
+            {/* TEMPORARY: LocationSelector şu an kapalı, çünkü sadece bir lokasyon aktif
+                İleride birden fazla lokasyon için bu bloğu tekrar aktif edin */}
+            {/* {selectedLocationId === 0 && (
               <LocationSelector
                 locations={locations}
                 setLocation={setSelectedLocationId}
               />
-            )}
+            )} */}
             {selectedLocation && (
               <LocationPage
                 location={selectedLocation}
