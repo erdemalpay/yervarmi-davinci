@@ -100,8 +100,9 @@ export const LocationPage = ({
   }
 
   return (
-    <div>
-      <div className="w-full h-full flex flex-col bg-[#FBEEE2]">
+    <div className="flex-1 flex items-center justify-center">
+      <div className="w-full flex flex-col">
+        {/*
         <div className="flex justify-center w-full font-germania text-2xl lg:text-4xl">
           {allLocations.map((loc) => (
             <div
@@ -117,6 +118,7 @@ export const LocationPage = ({
             </div>
           ))}
         </div>
+        */}
         <div className="leading-[0] flex justify-center lg:mt-1">
           <Image src={gamePic} alt="Board Game" />
         </div>
