@@ -13,7 +13,7 @@ export const LanguageToggle = () => {
   return (
     <button
       onClick={toggleLanguage}
-      className="relative bg-dark-brown/80 backdrop-blur-sm rounded-full border border-dark-brown/50 shadow-lg cursor-pointer hover:shadow-xl transition-shadow duration-200 p-0.5 flex flex-row gap-0.5"
+      className="relative bg-white/10 backdrop-blur-sm rounded-full border border-white/20 shadow-lg cursor-pointer hover:shadow-xl transition-shadow duration-200 p-0.5 flex flex-row gap-0.5"
       title={currentLang === 'tr' ? 'Switch to English' : 'Türkçeye geç'}
     >
       {/* TR Flag */}
