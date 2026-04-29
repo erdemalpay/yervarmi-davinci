@@ -111,7 +111,7 @@ export const LocationPage = ({
         */}
 {!isTablesLoading && (
           <div className="px-4 pb-2 rounded-lg flex flex-col justify-center w-full">
-            <div className="text-center text-3xl lg:text-6xl font-body" style={{ color: "#1F2937" }}>
+            <div className="text-center text-3xl lg:text-5xl font-body font-bold" style={{ color: "#1F2937" }}>
               {t("location.title", { locationName: location.name })}
             </div>
             <div className="text-center text-base lg:text-xl font-body mt-2" style={{ color: "#1F2937" }}>
