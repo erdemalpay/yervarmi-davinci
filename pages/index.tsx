@@ -90,6 +90,8 @@ const Home: NextPage = () => {
 
           <LanguageToggle />
         </div>
+      </header>
+      <main className="flex-1 flex flex-col">
         {!isLocationsLoading && locations && (
           <>
             {/* TEMPORARY: LocationSelector şu an kapalı, çünkü sadece bir lokasyon aktif
