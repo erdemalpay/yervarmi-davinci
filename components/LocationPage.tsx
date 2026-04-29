@@ -90,50 +90,51 @@ export const LocationPage = ({
   }
 
   return (
-    <div className="w-full flex flex-col items-center justify-center px-4 py-8">
-      {!isTablesLoading && (
-        <div
-          className="w-full max-w-2xl px-5 py-8 flex flex-col items-center gap-3"
-          style={{ background: "#F7F3ED" }}
-        >
-          {/* Lokasyon başlığı */}
-          <h1
-            className="font-body font-bold text-center text-davinci-black-deep"
-            style={{ fontSize: "clamp(1.75rem, 6vw, 3rem)", lineHeight: 1.2 }}
-          >
-            {t("location.title", { locationName: location.name })}
-          </h1>
-
-          {/* Durum mesajı */}
-          <p
-            className="text-center font-body"
-            style={{
-              fontSize: "clamp(1rem, 3vw, 1.25rem)",
-              color: isOpen ? "var(--davinci-black, #1F2937)" : "var(--red-light, #C94040)",
-              fontWeight: isOpen ? 400 : 600,
-            }}
-          >
-            {message}
-          </p>
-
-          {/* Boş masa sayısı */}
-          {isOpen && availableTables > 0 && (
-            <p
-              className="text-center font-body font-semibold"
-              style={{ color: "var(--red, #A80000)", fontSize: "1.05rem" }}
+    <div className="flex-1 flex items-center justify-center">
+      <div className="w-full flex flex-col">
+        {/*
+        <div className="flex justify-center w-full font-germania text-2xl lg:text-4xl">
+          {allLocations.map((loc) => (
+            <div
+              key={loc._id}
+              className={`text-center h-20 w-4/5 justify-center flex items-center cursor-pointer ${
+                loc._id === location._id
+                  ? "bg-[#FBEEE2] text-dark-brown"
+                  : "bg-dark-brown text-light-brown"
+              }`}
+              onClick={() => onLocationChange(loc._id)}
             >
-              {t("location.availableTables", { count: availableTables })}
-            </p>
-          )}
-
-          {/* Masa grid */}
-          {isOpen && (
-            <div className="w-full flex justify-center">
-              <div
-                className="p-2 grid gap-1 w-full"
-                style={{ gridTemplateColumns: `repeat(${gridColumns}, minmax(0, 1fr))` }}
-              >
-                {tables}
+              {loc.name}
+            </div>
+          ))}
+        </div>
+        */}
+        <div className="leading-[0] flex justify-center lg:mt-1">
+          <Image src={gamePic} alt="Board Game" />
+        </div>
+        {!isTablesLoading && (
+          <div className="px-4 pb-2 rounded-lg flex flex-col justify-center w-full">
+            <div className="text-center text-dark-brown text-3xl lg:text-6xl font-germania">
+              {t("location.title", { locationName: location.name })}
+            </div>
+            <div className="text-center text-dark-brown text-base lg:text-xl font-merriweather mt-2">
+              {message}
+            </div>
+            {isOpen && availableTables > 0 && (
+              <div className="text-center text-dark-brown text-base lg:text-xl font-merriweather font-bold">
+                {t("location.availableTables", { count: availableTables })}
+              </div>
+            )}
+            {isOpen && (
+              <div className="flex justify-center w-full">
+                <div className="flex justify-center w-full lg:w-1/2">
+                  <div
+                    className="p-2 grid gap-1 w-full max-w-2xl"
+                    style={{ gridTemplateColumns: `repeat(${gridColumns}, minmax(0, 1fr))` }}
+                  >
+                    {tables}
+                  </div>
+                </div>
               </div>
             </div>
           )}

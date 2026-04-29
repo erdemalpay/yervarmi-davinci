@@ -10,8 +10,11 @@ import { LanguageToggle } from "../components/LanguageToggle";
 const Home: NextPage = () => {
   const { t } = useTranslation();
 
-  const ACTIVE_LOCATION_ID = 2;
-  const [selectedLocationId, setSelectedLocationId] = useState(ACTIVE_LOCATION_ID);
+  // TEMPORARY: Şu an sadece bir lokasyon aktif olduğu için direkt _id: 2'yi gösteriyoruz
+  // İleride birden fazla lokasyon açıldığında bu magic number'ı kaldırıp
+  // LocationSelector'ı tekrar aktif etmek için 0 ile başlatın
+  const ACTIVE_LOCATION_ID = 2; // Magic number: Şu an aktif tek lokasyonun ID'si
+  const [selectedLocationId, setSelectedLocationId] = useState(ACTIVE_LOCATION_ID); // Çoklu lokasyon için: useState(0)
 
   const { locations, isLocationsLoading } = useLocations();
 
@@ -87,16 +90,24 @@ const Home: NextPage = () => {
 
           <LanguageToggle />
         </div>
-      </header>
-
-      {/* İçerik */}
-      <main className="flex-1 flex flex-col items-center justify-center" style={{ position: "relative", zIndex: 10 }}>
-        {!isLocationsLoading && locations && selectedLocation && (
-          <LocationPage
-            location={selectedLocation}
-            allLocations={locations}
-            onLocationChange={setSelectedLocationId}
-          />
+        {!isLocationsLoading && locations && (
+          <>
+            {/* TEMPORARY: LocationSelector şu an kapalı, çünkü sadece bir lokasyon aktif
+                İleride birden fazla lokasyon için bu bloğu tekrar aktif edin */}
+            {/* {selectedLocationId === 0 && (
+              <LocationSelector
+                locations={locations}
+                setLocation={setSelectedLocationId}
+              />
+            )} */}
+            {selectedLocation && (
+              <LocationPage
+                location={selectedLocation}
+                allLocations={locations}
+                onLocationChange={setSelectedLocationId}
+              />
+            )}
+          </>
         )}
       </main>
     </div>
