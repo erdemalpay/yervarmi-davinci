@@ -91,7 +91,7 @@ export const LocationPage = ({
 
   return (
     <div className="flex-1 flex items-center justify-center">
-      <div className="w-full flex flex-col">
+      <div className="w-full flex flex-col" style={{ backgroundColor: "#F7F3ED", borderRadius: "1rem", padding: "2rem" }}>
         {/*
         <div className="flex justify-center w-full font-germania text-2xl lg:text-4xl">
           {allLocations.map((loc) => (
@@ -109,19 +109,16 @@ export const LocationPage = ({
           ))}
         </div>
         */}
-        <div className="leading-[0] flex justify-center lg:mt-1">
-          <Image src={gamePic} alt="Board Game" />
-        </div>
-        {!isTablesLoading && (
+{!isTablesLoading && (
           <div className="px-4 pb-2 rounded-lg flex flex-col justify-center w-full">
-            <div className="text-center text-dark-brown text-3xl lg:text-6xl font-germania">
+            <div className="text-center text-3xl lg:text-5xl font-body font-bold" style={{ color: "#1F2937" }}>
               {t("location.title", { locationName: location.name })}
             </div>
-            <div className="text-center text-dark-brown text-base lg:text-xl font-merriweather mt-2">
+            <div className="text-center text-base lg:text-xl font-body mt-2" style={{ color: "#1F2937" }}>
               {message}
             </div>
             {isOpen && availableTables > 0 && (
-              <div className="text-center text-dark-brown text-base lg:text-xl font-merriweather font-bold">
+              <div className="text-center text-base lg:text-xl font-body font-bold" style={{ color: "#1F2937" }}>
                 {t("location.availableTables", { count: availableTables })}
               </div>
             )}
@@ -136,8 +133,7 @@ export const LocationPage = ({
                   </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
 
           {/* Ara yönlendirme notu */}
           {isOpen && (
@@ -152,7 +148,8 @@ export const LocationPage = ({
           
 
           {/* Aksiyon butonları */}
-          <div className="w-full flex flex-col gap-3">
+          <div className="flex justify-center w-full">
+          <div className="flex flex-col gap-3 w-full lg:w-1/2 max-w-2xl">
             {location.phoneNumber && (
               <button
                 onClick={() => (document.location.href = `tel:${location.phoneNumber}`)}
@@ -209,8 +206,10 @@ export const LocationPage = ({
               </button>
             )}
           </div>
+          </div>
         </div>
       )}
+      </div>
     </div>
   );
 };
