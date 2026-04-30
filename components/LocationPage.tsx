@@ -113,8 +113,12 @@ export const LocationPage = ({
           <div
             className="flex flex-col justify-center w-full max-w-3xl mx-auto px-6 py-8 lg:px-10 lg:py-10"
             style={{
-              backgroundColor: "#F7F3ED",
+              backgroundColor: "rgba(255, 255, 255, 0)",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
               borderRadius: "1.25rem",
+              boxShadow: "0 8px 40px rgba(0,0,0,0.18)",
+              border: "1px solid rgba(255, 255, 255, 0.5)",
               position: "relative",
               zIndex: 1,
             }}

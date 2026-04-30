@@ -25,18 +25,34 @@ const Home: NextPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#F7F3ED", position: "relative", overflow: "hidden" }}>
-      {/* Logo döşeme arka planı */}
+      {/* Logo döşeme arka planı — geçici olarak gizlendi */}
+      {false && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none"
+          style={{
+            position: "absolute",
+            inset: 0,
+            opacity: 0.025,
+            backgroundImage: "url('/images/logo.png')",
+            backgroundRepeat: "repeat",
+            backgroundSize: "200px auto",
+            filter: "grayscale(1) brightness(0.5)",
+          }}
+        />
+      )}
+      {/* Damalı arka plan */}
       <div
         aria-hidden="true"
         className="pointer-events-none"
         style={{
           position: "absolute",
           inset: 0,
-          opacity: 0.025,
-          backgroundImage: "url('/images/logo.png')",
-          backgroundRepeat: "repeat",
-          backgroundSize: "200px auto",
-          filter: "grayscale(1) brightness(0.5)",
+          opacity: 0.07,
+          backgroundImage:
+            "linear-gradient(45deg, #1F2937 25%, transparent 25%), linear-gradient(-45deg, #1F2937 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #1F2937 75%), linear-gradient(-45deg, transparent 75%, #1F2937 75%)",
+          backgroundSize: "60px 60px",
+          backgroundPosition: "0 0, 0 30px, 30px -30px, -30px 0px",
         }}
       />
 
