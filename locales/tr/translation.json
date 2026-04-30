@@ -22,7 +22,7 @@
     "closedToday": "Üzgünüz, bugün kapalıyız.",
     "closedDays": "Üzgünüz, {{days}} günleri kapalıyız.",
     "closedNow": "Şu an kapalıyız. Çalışma saatlerimiz: {{hours}}",
-    "opensAt": "Bugün saat {{time}}'de açılıyoruz.",
+    "opensAt": "Bugün saat {{time}}'de açılıyoruz. Kafemiz açıldıktan sonra masalarımızın doluluk durumunu görebilirsiniz",
     "closesAt": "Bugün saat {{time}}'de kapanıyoruz.",
     "temporarilyClosed": "Geçici olarak kapalıyız."
   },

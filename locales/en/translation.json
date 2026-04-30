@@ -22,7 +22,7 @@
     "closedToday": "Sorry, we're closed today.",
     "closedDays": "Sorry, We're closed on {{days}}.",
     "closedNow": "We're currently closed. Our hours: {{hours}}",
-    "opensAt": "We open today at {{time}}.",
+    "opensAt": "We open today at {{time}}. You can view the availability of our tables after our café opens.",
     "closesAt": "We close today at {{time}}.",
     "temporarilyClosed": "We are temporarily closed."
   },

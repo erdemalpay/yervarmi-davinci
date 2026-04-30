@@ -72,7 +72,7 @@ const Home: NextPage = () => {
         }}
         className="w-full h-16 flex items-center px-4 lg:px-8"
       >
-        <div className="flex items-center justify-between w-full max-w-5xl mx-auto">
+        <div className="flex items-center justify-between w-full">
           <a href="https://davinciboardgame.com" className="flex items-center">
             <img
               src="/images/davinci-logo.png"
