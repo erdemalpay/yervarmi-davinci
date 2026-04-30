@@ -7,7 +7,7 @@
     "selectLocation": "Da Vinci'de yer var mı?"
   },
   "location": {
-    "title": "Da Vinci {{locationName}}'da yer var mı?",
+    "title": "{{locationName}}'da yer var mı?",
     "availableTables": "Şu an {{count}} boş masa var.",
     "callCafe": "Emin olmak için kafeyi arayabilirsin.",
     "callButton": "Kafeyi Ara",

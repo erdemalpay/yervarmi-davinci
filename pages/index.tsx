@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Image from "next/image";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LocationPage } from "../components/LocationPage";
@@ -89,20 +90,25 @@ const Home: NextPage = () => {
         className="w-full h-16 flex items-center px-4 lg:px-8"
       >
         <div className="flex items-center justify-between w-full">
-          <a href="https://davinciboardgame.com" className="flex items-center">
-            <img
-              src="/images/davinci-logo.png"
-              alt="Da Vinci Board Game"
-              className="h-10 w-auto object-contain"
-            />
-          </a>
+          <div className="w-10" />
 
-          <span
-            className="font-body font-bold text-white text-xl lg:text-2xl tracking-wide absolute left-1/2 -translate-x-1/2"
-            style={{ letterSpacing: "0.04em" }}
-          >
-            {t("common.appName")}
-          </span>
+          <div className="flex items-center gap-3">
+            <Image
+              src="/images/davinci-logo.png"
+              alt="Da Vinci Logo"
+              width={56}
+              height={56}
+              className="h-10 md:h-12 w-auto object-contain"
+            />
+            <div className="flex flex-col leading-tight">
+              <span className="font-display text-white text-lg md:text-xl">
+                Da Vinci
+              </span>
+              <span className="font-body text-white/75 text-xs md:text-sm tracking-[0.08em] uppercase">
+                Board Game Cafe
+              </span>
+            </div>
+          </div>
 
           <LanguageToggle />
         </div>

@@ -7,7 +7,7 @@
     "selectLocation": "Is there space at Da Vinci?"
   },
   "location": {
-    "title": "Is there space at Da Vinci {{locationName}}?",
+    "title": "Is there space at {{locationName}}?",
     "availableTables": "There are currently {{count}} available tables.",
     "callCafe": "You can call the cafe to be sure.",
     "callButton": "Call Cafe",
