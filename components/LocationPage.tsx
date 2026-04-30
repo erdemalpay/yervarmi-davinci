@@ -90,8 +90,8 @@ export const LocationPage = ({
   }
 
   return (
-    <div className="flex-1 flex items-center justify-center">
-      <div className="w-full flex flex-col" style={{ backgroundColor: "#F7F3ED", borderRadius: "1rem", padding: "2rem" }}>
+    <div className="flex-1 flex items-center justify-center p-4 lg:p-8">
+      <div className="w-full">
         {/*
         <div className="flex justify-center w-full font-germania text-2xl lg:text-4xl">
           {allLocations.map((loc) => (
@@ -110,7 +110,15 @@ export const LocationPage = ({
         </div>
         */}
 {!isTablesLoading && (
-          <div className="px-4 pb-2 rounded-lg flex flex-col justify-center w-full">
+          <div
+            className="flex flex-col justify-center w-full max-w-3xl mx-auto px-6 py-8 lg:px-10 lg:py-10"
+            style={{
+              backgroundColor: "#F7F3ED",
+              borderRadius: "1.25rem",
+              position: "relative",
+              zIndex: 1,
+            }}
+          >
             <div className="text-center text-3xl lg:text-5xl font-body font-bold" style={{ color: "#1F2937" }}>
               {t("location.title", { locationName: location.name })}
             </div>
@@ -124,7 +132,7 @@ export const LocationPage = ({
             )}
             {isOpen && (
               <div className="flex justify-center w-full mt-4">
-                <div className="flex justify-center w-full lg:w-1/2">
+                <div className="flex justify-center w-full">
                   <div
                     className="p-2 grid gap-1 w-full max-w-2xl"
                     style={{ gridTemplateColumns: `repeat(${gridColumns}, minmax(0, 1fr))` }}
@@ -137,7 +145,7 @@ export const LocationPage = ({
 
           {/* Aksiyon butonları */}
           <div className="flex justify-center w-full mt-6">
-          <div className="flex flex-col gap-3 w-full lg:w-1/2 max-w-2xl">
+          <div className="flex flex-col gap-3 w-full">
             {isOpen && (
               <p
                 className="text-center font-body mb-1"
