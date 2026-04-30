@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Image from "next/image";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LocationPage } from "../components/LocationPage";
@@ -25,18 +26,34 @@ const Home: NextPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#F7F3ED", position: "relative", overflow: "hidden" }}>
-      {/* Logo döşeme arka planı */}
+      {/* Logo döşeme arka planı — geçici olarak gizlendi */}
+      {false && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none"
+          style={{
+            position: "absolute",
+            inset: 0,
+            opacity: 0.025,
+            backgroundImage: "url('/images/logo.png')",
+            backgroundRepeat: "repeat",
+            backgroundSize: "200px auto",
+            filter: "grayscale(1) brightness(0.5)",
+          }}
+        />
+      )}
+      {/* Damalı arka plan */}
       <div
         aria-hidden="true"
         className="pointer-events-none"
         style={{
           position: "absolute",
           inset: 0,
-          opacity: 0.025,
-          backgroundImage: "url('/images/logo.png')",
-          backgroundRepeat: "repeat",
-          backgroundSize: "200px auto",
-          filter: "grayscale(1) brightness(0.5)",
+          opacity: 0.07,
+          backgroundImage:
+            "linear-gradient(45deg, #1F2937 25%, transparent 25%), linear-gradient(-45deg, #1F2937 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #1F2937 75%), linear-gradient(-45deg, transparent 75%, #1F2937 75%)",
+          backgroundSize: "60px 60px",
+          backgroundPosition: "0 0, 0 30px, 30px -30px, -30px 0px",
         }}
       />
 
@@ -72,21 +89,26 @@ const Home: NextPage = () => {
         }}
         className="w-full h-16 flex items-center px-4 lg:px-8"
       >
-        <div className="flex items-center justify-between w-full max-w-5xl mx-auto">
-          <a href="https://davinciboardgame.com" className="flex items-center">
-            <img
-              src="/images/davinci-logo.png"
-              alt="Da Vinci Board Game"
-              className="h-10 w-auto object-contain"
-            />
-          </a>
+        <div className="flex items-center justify-between w-full">
+          <div className="w-10" />
 
-          <span
-            className="font-body font-bold text-white text-xl lg:text-2xl tracking-wide absolute left-1/2 -translate-x-1/2"
-            style={{ letterSpacing: "0.04em" }}
-          >
-            {t("common.appName")}
-          </span>
+          <div className="flex items-center gap-3">
+            <Image
+              src="/images/davinci-logo.png"
+              alt="Da Vinci Logo"
+              width={56}
+              height={56}
+              className="h-10 md:h-12 w-auto object-contain"
+            />
+            <div className="flex flex-col leading-tight">
+              <span className="font-display text-white text-lg md:text-xl">
+                Da Vinci
+              </span>
+              <span className="font-body text-white/75 text-xs md:text-sm tracking-[0.08em] uppercase">
+                Board Game Cafe
+              </span>
+            </div>
+          </div>
 
           <LanguageToggle />
         </div>

@@ -90,8 +90,8 @@ export const LocationPage = ({
   }
 
   return (
-    <div className="flex-1 flex items-center justify-center">
-      <div className="w-full flex flex-col" style={{ backgroundColor: "#F7F3ED", borderRadius: "1rem", padding: "2rem" }}>
+    <div className="flex-1 flex items-center justify-center p-4 lg:p-8">
+      <div className="w-full">
         {/*
         <div className="flex justify-center w-full font-germania text-2xl lg:text-4xl">
           {allLocations.map((loc) => (
@@ -110,11 +110,23 @@ export const LocationPage = ({
         </div>
         */}
 {!isTablesLoading && (
-          <div className="px-4 pb-2 rounded-lg flex flex-col justify-center w-full">
+          <div
+            className="flex flex-col justify-center w-full max-w-3xl mx-auto px-6 py-8 lg:px-10 lg:py-10"
+            style={{
+              backgroundColor: "rgba(255, 255, 255, 0)",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
+              borderRadius: "1.25rem",
+              boxShadow: "0 8px 40px rgba(0,0,0,0.18)",
+              border: "1px solid rgba(255, 255, 255, 0.5)",
+              position: "relative",
+              zIndex: 1,
+            }}
+          >
             <div className="text-center text-3xl lg:text-5xl font-body font-bold" style={{ color: "#1F2937" }}>
               {t("location.title", { locationName: location.name })}
             </div>
-            <div className="text-center text-base lg:text-xl font-body mt-2" style={{ color: "#1F2937" }}>
+            <div className="text-center text-base lg:text-xl font-body mt-6" style={{ color: "#1F2937" }}>
               {message}
             </div>
             {isOpen && availableTables > 0 && (
@@ -123,8 +135,8 @@ export const LocationPage = ({
               </div>
             )}
             {isOpen && (
-              <div className="flex justify-center w-full">
-                <div className="flex justify-center w-full lg:w-1/2">
+              <div className="flex justify-center w-full mt-4">
+                <div className="flex justify-center w-full">
                   <div
                     className="p-2 grid gap-1 w-full max-w-2xl"
                     style={{ gridTemplateColumns: `repeat(${gridColumns}, minmax(0, 1fr))` }}
@@ -135,21 +147,17 @@ export const LocationPage = ({
               </div>
             )}
 
-          {/* Ara yönlendirme notu */}
-          {isOpen && (
-            <p
-              className="text-center font-body"
-              style={{ fontSize: "0.8rem", color: "var(--davinci-black, #1F2937)" }}
-            >
-              {t("location.callCafe")}
-            </p>
-          )}
-
-          
-
           {/* Aksiyon butonları */}
-          <div className="flex justify-center w-full">
-          <div className="flex flex-col gap-3 w-full lg:w-1/2 max-w-2xl">
+          <div className="flex justify-center w-full mt-6">
+          <div className="flex flex-col gap-3 w-full">
+            {isOpen && (
+              <p
+                className="text-center font-body mb-1"
+                style={{ fontSize: "0.8rem", color: "var(--davinci-black, #1F2937)" }}
+              >
+                {t("location.callCafe")}
+              </p>
+            )}
             {location.phoneNumber && (
               <button
                 onClick={() => (document.location.href = `tel:${location.phoneNumber}`)}
@@ -182,26 +190,25 @@ export const LocationPage = ({
             {mapsHref && (
               <button
                 onClick={() => (document.location.href = mapsHref)}
-                className="w-full flex items-center justify-center gap-2 font-body font-semibold rounded-full transition-all duration-200"
+                className="w-full flex items-center justify-center gap-2 font-body font-semibold text-white rounded-full transition-all duration-200"
                 style={{
-                  background: "transparent",
-                  border: "2px solid #DDE3EB",
-                  color: "#1F2937",
-                  padding: "13px 24px",
+                  background: "var(--red, #A80000)",
+                  padding: "14px 24px",
                   fontSize: "0.95rem",
+                  boxShadow: "0 4px 20px rgba(168,0,0,0.25)",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(168,0,0,0.4)";
-                  e.currentTarget.style.color = "var(--red, #A80000)";
+                  e.currentTarget.style.background = "var(--red-dark, #540000)";
                   e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 8px 28px rgba(168,0,0,0.35)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "#DDE3EB";
-                  e.currentTarget.style.color = "#1F2937";
+                  e.currentTarget.style.background = "var(--red, #A80000)";
                   e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "0 4px 20px rgba(168,0,0,0.25)";
                 }}
               >
-                <img src="/map.svg" alt="" className="w-5 h-5" />
+                <img src="/map.svg" alt="" className="w-5 h-5" style={{ filter: "brightness(0) invert(1)" }} />
                 {t("location.directionsButton")}
               </button>
             )}
