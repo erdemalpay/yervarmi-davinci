@@ -90,8 +90,6 @@ const Home: NextPage = () => {
         className="w-full h-16 flex items-center px-4 lg:px-8"
       >
         <div className="flex items-center justify-between w-full">
-          <div className="w-10" />
-
           <div className="flex items-center gap-3">
             <Image
               src="/images/davinci-logo.png"
