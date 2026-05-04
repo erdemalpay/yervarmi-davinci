@@ -90,7 +90,10 @@ const Home: NextPage = () => {
         className="w-full h-16 flex items-center px-4 lg:px-8"
       >
         <div className="flex items-center justify-between w-full">
-          <div className="flex items-center gap-3">
+          <a
+            href="https://davinciboardgame.com/"
+            className="flex items-center gap-3"
+          >
             <Image
               src="/images/davinci-logo.png"
               alt="Da Vinci Logo"
@@ -106,7 +109,7 @@ const Home: NextPage = () => {
                 Board Game Cafe
               </span>
             </div>
-          </div>
+          </a>
 
           <LanguageToggle />
         </div>
