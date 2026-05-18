@@ -9,7 +9,7 @@
   "location": {
     "title": "Is there space at {{locationName}}?",
     "availableTables": "There are currently {{count}} available tables.",
-    "callCafe": "You can call the cafe to be sure.",
+    "callCafe": "We do not accept reservations; if you call before your visit, we can hold a table for approximately half an hour.",
     "callButton": "Call Cafe",
     "directionsButton": "Get Directions"
   },

@@ -9,7 +9,7 @@
   "location": {
     "title": "{{locationName}}'da yer var mı?",
     "availableTables": "Şu an {{count}} boş masa var.",
-    "callCafe": "Emin olmak için kafeyi arayabilirsin.",
+    "callCafe": "Rezervasyon kabul etmiyoruz; gelişinizden önce aramanız hâlinde masanızı yaklaşık yarım saat süreyle ayırtabiliyoruz.",
     "callButton": "Kafeyi Ara",
     "directionsButton": "Yol tarifi al"
   },
